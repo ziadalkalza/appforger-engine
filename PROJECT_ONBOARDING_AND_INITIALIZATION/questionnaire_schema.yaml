@@ -1,0 +1,51 @@
+questionnaire_version: 1
+modes:
+  - quick_setup
+  - full_setup
+  - existing_project_import
+  - team_setup
+  - advanced_setup
+minimal_required:
+  project_name:
+    critical: true
+  project_lifecycle:
+    allowed: [new_project, existing_project]
+    critical: true
+  ongoing_project:
+    allowed: [yes_active_project, no_new_project, no_snapshot_or_archived_project, mixed_or_not_sure]
+    critical: true
+    triggers:
+      yes_active_project: [initial_code_context_bootstrap, code_context_staleness_tracking]
+      mixed_or_not_sure: [register_available_code_sources, block_code_implementation_until_resolved]
+  user_mode:
+    allowed: [single_user, team, undecided]
+    critical: true
+  app_type:
+    allowed: [mobile, web, both, backend_only, unknown]
+    critical_if: [implementation_requested]
+  starting_point:
+    allowed: [scratch, existing_code, existing_design, existing_docs, mixed]
+    critical: true
+  workflow_preference:
+    allowed: [standard, flexible, not_sure]
+    default: standard
+  backend_needed:
+    allowed: [yes, no, not_sure]
+    critical_if: [backend_or_api_requested]
+  design_workflow:
+    allowed: [figma_first, html_sandbox_first, existing_design_or_frontend, references, no_ui_yet, not_sure]
+  brand_family_policy: # user-facing label: tool_consistency_mode
+    allowed: [strict_same_brand, high_risk_strict, advisory_with_reconciliation]
+    recommended: high_risk_strict
+  preferred_code_provider:
+    allowed: [codex, claude_code, cursor, aider, local_code_agent, decide_per_task]
+  docs_storage:
+    allowed: [local_docs, github_docs, google_drive, supabase_storage, generic_cloud, not_sure]
+  context_backend:
+    allowed: [file_only, local_jsonl, qdrant, supabase_pgvector, generic_vector_db, not_sure]
+  automation_level:
+    allowed: [manual, draft_generation, local_validation_reporting, agent_execution_after_approval, github_actions_enabled, future_runner]
+  public_release_expected:
+    allowed: [yes, no, not_sure]
+  likely_integrations:
+    allowed: [payments, maps, notifications, analytics, email_sms, storage_files, none, not_sure]

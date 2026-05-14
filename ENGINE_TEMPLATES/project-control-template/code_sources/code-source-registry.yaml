@@ -1,0 +1,11 @@
+code_sources:
+  - id: backend-main
+    role: backend
+    canonical: true
+    location:
+      mode: local_folder
+      local_path: backend
+    indexing:
+      rag_enabled: true
+      graph_enabled: true
+      raw_code_indexing: false

@@ -1,0 +1,2 @@
+# Optional future SDK-based implementation dependencies.
+# Pin an MCP SDK package here when the deployment target standardizes on one.

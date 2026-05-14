@@ -1,0 +1,28 @@
+context_backend:
+  default_mode: local_jsonl
+  profiles:
+    local_jsonl:
+      enabled: true
+      index_path: project-control/context-backend/indexes/context.jsonl
+    qdrant:
+      enabled: false
+      collection_per_project: true
+      url_env: QDRANT_URL
+      api_key_env: QDRANT_API_KEY
+    supabase_pgvector:
+      enabled: false
+      url_env: SUPABASE_URL
+      service_key_env: SUPABASE_SERVICE_ROLE_KEY
+  indexing:
+    project_control_markdown: true
+    docs_summaries: true
+    code_summaries: true
+    raw_code: false
+    sensitive_docs: false
+  retrieval:
+    require_source_references: true
+    log_retrievals: true
+    explain_retrieval_reason: true
+  stale_context:
+    block_high_risk_tasks: true
+    create_reindex_task: true

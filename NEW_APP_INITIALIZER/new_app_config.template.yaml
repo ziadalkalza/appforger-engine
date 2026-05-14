@@ -1,0 +1,21 @@
+app_name: "My App"
+slug: "my-app"
+workspace_root: "./my-app-workspace"
+
+# web | mobile | both | multi | backend_only | unknown
+app_type: "web"
+
+# generic | flutter | react_native | cross_platform | ios | android | native_both | none
+mobile_strategy: "none"
+
+# none | supabase | fastapi_postgres | existing | undecided
+backend_stack: "none"
+
+create_shared_folders:
+  project_control: true
+  docs: true
+  design_assets: true
+  exports: true
+  local_only: true
+
+# Implementation folders are generated conditionally from app_type, mobile_strategy, and backend_stack.

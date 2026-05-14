@@ -1,0 +1,20 @@
+team_operations_backend:
+  enabled: false
+  profile: null # supabase | fastapi_postgres | sqlite
+  canonical_truth: project-control
+  write_back_mode: sync_packet_or_pr
+  store_full_documents: false
+  store_secret_values: false
+  sync_scope:
+    - team_members
+    - role_assignments
+    - tasks
+    - approvals
+    - handoffs
+    - conflicts
+    - reviews
+    - release_blockers
+    - agent_runs
+    - job_runs
+    - workflow_stage_state
+    - secret_metadata

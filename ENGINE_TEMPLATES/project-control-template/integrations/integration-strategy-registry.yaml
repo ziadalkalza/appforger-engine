@@ -1,0 +1,11 @@
+integration_strategy_registry:
+  version: 1
+  policy: "Run Integration Strategy Advisor before custom API/Python integrations."
+  default_order:
+    - official_connector_or_mcp
+    - appforger_builtin_integration
+    - direct_api
+    - custom_python
+    - hybrid_when_needed
+  require_research_before_custom_code: true
+  require_decision_packet: true

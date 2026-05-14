@@ -1,0 +1,3 @@
+#!/bin/sh
+# Optional AppForge local context reindex after pull/merge.
+python project-control/context-backend/scripts/index_project_control.py --project-control project-control || true

@@ -1,0 +1,9 @@
+git_providers:
+  - id: bitbucket-cloud-main
+    provider: bitbucket
+    product: cloud
+    base_url: https://api.bitbucket.org/2.0
+    auth:
+      method: api_token
+      auth_reference: bitbucket_cloud_api_token
+      secrets_stored_here: false

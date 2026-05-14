@@ -1,0 +1,16 @@
+nodes:
+  - Requirement
+  - UserStory
+  - Screen
+  - Component
+  - ApiEndpoint
+  - CodeFile
+  - Symbol
+  - ConfluencePage
+edges:
+  - IMPLEMENTS
+  - CALLS
+  - USES
+  - DOCUMENTED_BY
+  - TESTED_BY
+  - RELATES_TO

@@ -1,0 +1,65 @@
+roles:
+  admin:
+    description: "Can configure sources, access, indexing, sync, and approvals."
+    default_access: admin
+
+  backend_developer:
+    description: "Can write authorized backend sources. Read-only elsewhere unless granted."
+    writable_roles:
+      - backend
+    default_cross_role_access: read_only
+
+  frontend_mobile_developer:
+    description: "Can write authorized web/mobile/iOS/Android frontend sources. Read-only elsewhere unless granted."
+    writable_roles:
+      - web
+      - mobile
+      - ios
+      - android
+      - frontend_mobile
+    default_cross_role_access: read_only
+
+  product:
+    default_access: read_only
+    default_read_scope:
+      - summaries
+      - maps
+
+  designer:
+    default_access: read_only
+    default_read_scope:
+      - ui_maps
+      - summaries
+
+  qa:
+    default_access: read_only
+    default_read_scope:
+      - test_maps
+      - release_evidence
+      - summaries
+
+access_levels:
+  no_access:
+    can_read: false
+    can_write: false
+  read_only:
+    can_read: true
+    can_write: false
+    allowed_views:
+      - metadata_only
+      - summaries_only
+      - maps_only
+      - raw_files_if_allowed
+  write:
+    can_read: true
+    can_write: true
+    write_scope:
+      - owned_code_area
+      - approved_task_branch
+      - approved_files
+  admin:
+    can_read: true
+    can_write: true
+    can_configure_sources: true
+    can_manage_access_policy: true
+    can_approve_raw_code_indexing: true

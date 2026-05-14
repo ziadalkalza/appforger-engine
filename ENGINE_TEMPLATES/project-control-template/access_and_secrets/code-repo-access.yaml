@@ -1,0 +1,43 @@
+code_repo_access:
+  - source_id: backend-main
+    repo_role: backend
+    auth_required: false
+    auth_reference: null
+    secrets_stored_here: false
+    access_by_role:
+      admin:
+        level: admin
+        can_write: true
+        can_configure_access: true
+      backend_developer:
+        level: write
+        can_write: true
+        write_scope:
+          - owned_code_area
+          - approved_task_branch
+      frontend_mobile_developer:
+        level: read_only
+        read_scope:
+          - api_maps
+          - summaries
+
+  - source_id: frontend-main
+    repo_role: frontend_mobile
+    auth_required: false
+    auth_reference: null
+    secrets_stored_here: false
+    access_by_role:
+      admin:
+        level: admin
+        can_write: true
+      frontend_mobile_developer:
+        level: write
+        can_write: true
+        write_scope:
+          - owned_code_area
+          - approved_task_branch
+      backend_developer:
+        level: read_only
+        read_scope:
+          - api_client_maps
+          - summaries

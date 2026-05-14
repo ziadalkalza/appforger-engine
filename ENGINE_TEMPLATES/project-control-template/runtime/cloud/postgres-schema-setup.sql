@@ -1,0 +1,2 @@
+-- Apply project-control/runtime/sql/*.sql to the configured managed Postgres database.
+-- This file intentionally contains references only; schema truth is stored under runtime/sql/.

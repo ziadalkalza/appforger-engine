@@ -1,0 +1,3 @@
+# Tool Recommendation Template
+
+Recommended tool: ... Reason: ... Proper path: ... Draft-only path: ... User decision: ... Registry update needed: ...

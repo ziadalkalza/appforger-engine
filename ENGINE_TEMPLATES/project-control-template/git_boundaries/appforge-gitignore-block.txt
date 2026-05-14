@@ -1,0 +1,8 @@
+# >>> AppForger managed ignore rules
+/appforge-engine/
+/local-only/
+*.local.yaml
+*.local.env
+.env
+.env.*
+# <<< AppForger managed ignore rules

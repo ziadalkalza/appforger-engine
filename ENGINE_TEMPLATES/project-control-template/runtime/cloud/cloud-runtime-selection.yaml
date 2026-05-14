@@ -1,0 +1,27 @@
+cloud_runtime:
+  enabled: false
+  sql:
+    provider: managed_postgres
+    mode: existing_cloud
+    connection_reference: POSTGRES_URL
+    initialize_schema: false
+  vector:
+    provider: qdrant_cloud
+    mode: existing_cloud
+    url_reference: QDRANT_URL
+    api_key_reference: QDRANT_API_KEY
+    collections:
+      - appforge_docs
+      - appforge_code
+      - appforge_confluence
+      - appforge_mixed_context
+  graph:
+    provider: neo4j_aura
+    mode: existing_cloud
+    uri_reference: NEO4J_URI
+    username_reference: NEO4J_USERNAME
+    password_reference: NEO4J_PASSWORD
+    initialize_constraints: false
+  provisioning:
+    automatic_paid_resource_creation: false
+    requires_explicit_approval: true

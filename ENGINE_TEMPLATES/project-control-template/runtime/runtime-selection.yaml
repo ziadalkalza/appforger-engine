@@ -1,0 +1,19 @@
+runtime:
+  sql:
+    provider: postgres
+    mode: ask
+    env_url_reference: POSTGRES_URL
+  vector:
+    provider: qdrant
+    mode: ask
+    env_url_reference: QDRANT_URL
+  graph:
+    provider: neo4j_or_postgres_graph
+    mode: ask
+    env_uri_reference: NEO4J_URI
+
+cloud_runtime_selection:
+  enabled: false
+  setup_plan: project-control/runtime/cloud/cloud-runtime-setup-plan.md
+  health_report: project-control/runtime/cloud/cloud-runtime-health-report.md
+  paid_resource_creation_allowed: false

@@ -1,0 +1,55 @@
+connector_catalog:
+  note: "Starter catalog only. Research current official/trusted connector/MCP options before use."
+  entries:
+    - id: atlassian_confluence_jira
+      services: [confluence, jira]
+      preferred_default: hybrid
+      known_options: [official_connector_or_mcp, appforger_confluence_fetch_pipeline, direct_api]
+    - id: github
+      services: [github]
+      preferred_default: hybrid
+      known_options: [official_connector_or_mcp, appforger_git_provider, direct_api]
+    - id: gitlab
+      services: [gitlab]
+      preferred_default: hybrid
+      known_options: [official_connector_or_mcp, appforger_git_provider, direct_api]
+    - id: bitbucket
+      services: [bitbucket]
+      preferred_default: hybrid
+      known_options: [official_connector_or_mcp, appforger_git_provider, direct_api]
+    - id: google_workspace_drive
+      services: [google_drive, google_docs, google_workspace]
+      preferred_default: connector_first
+      known_options: [official_connector_or_mcp, direct_api]
+    - id: slack
+      services: [slack]
+      preferred_default: connector_first
+      known_options: [official_connector_or_mcp, direct_api]
+    - id: notion
+      services: [notion]
+      preferred_default: connector_first
+      known_options: [official_connector_or_mcp, direct_api]
+    - id: linear
+      services: [linear]
+      preferred_default: connector_first
+      known_options: [official_connector_or_mcp, direct_api]
+    - id: trello
+      services: [trello]
+      preferred_default: connector_first
+      known_options: [appforger_trello_pack, official_connector_or_mcp, direct_api]
+    - id: supabase
+      services: [supabase]
+      preferred_default: appforger_builtin_or_api
+      known_options: [appforger_runtime_profile, direct_api]
+    - id: qdrant
+      services: [qdrant]
+      preferred_default: appforger_runtime_profile
+      known_options: [appforger_runtime_profile, direct_api]
+    - id: neo4j
+      services: [neo4j]
+      preferred_default: appforger_runtime_profile
+      known_options: [appforger_runtime_profile, direct_api]
+    - id: postgres
+      services: [postgres]
+      preferred_default: appforger_runtime_profile
+      known_options: [appforger_runtime_profile, direct_sql]

@@ -1,0 +1,7 @@
+# Optional dependencies for runnable context backend starter scripts
+qdrant-client>=1.9.0
+python-dotenv>=1.0.0
+PyYAML>=6.0.0
+openai>=1.0.0
+# Optional local embeddings; install only if needed
+# sentence-transformers>=2.7.0

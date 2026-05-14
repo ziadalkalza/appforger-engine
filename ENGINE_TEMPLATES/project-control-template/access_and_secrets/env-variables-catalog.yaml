@@ -1,0 +1,34 @@
+# Describes required environment variables. Do not store actual values.
+env_variables:
+  - name: DATABASE_URL
+    required_for:
+      - backend_runtime
+      - migrations
+    environment:
+      - local
+      - staging
+      - production
+    owner_role: admin
+    value_location:
+      local: "backend/.env.local"
+      staging: "hosting provider env vars"
+      production: "cloud secret manager"
+    value_stored_in_appforge: false
+    required: true
+    notes: ""
+
+  - name: API_BASE_URL
+    required_for:
+      - frontend_runtime
+    environment:
+      - local
+      - staging
+      - production
+    owner_role: frontend_mobile_developer
+    value_location:
+      local: "web/.env.local"
+      staging: "hosting provider env vars"
+      production: "hosting provider env vars"
+    value_stored_in_appforge: false
+    required: true
+    notes: ""

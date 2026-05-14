@@ -1,0 +1,7 @@
+sources:
+  product-space:
+    type: confluence
+    default_storage_mode: rag_only
+  backend-main:
+    type: code
+    default_path: backend

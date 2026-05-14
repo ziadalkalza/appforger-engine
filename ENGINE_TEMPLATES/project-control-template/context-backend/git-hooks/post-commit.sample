@@ -1,0 +1,5 @@
+#!/bin/sh
+# Optional AppForge local context reindex hook.
+# Install manually: cp project-control/context-backend/git-hooks/post-commit.sample .git/hooks/post-commit && chmod +x .git/hooks/post-commit
+
+python project-control/context-backend/scripts/index_project_control.py --project-control project-control || true

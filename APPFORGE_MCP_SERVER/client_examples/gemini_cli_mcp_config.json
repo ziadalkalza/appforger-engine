@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "appforger": {
+      "command": "python",
+      "args": ["appforge-engine/APPFORGE_MCP_SERVER/server/appforge_mcp_server.py", "--engine-root", "appforge-engine", "--transport", "stdio"]
+    }
+  }
+}

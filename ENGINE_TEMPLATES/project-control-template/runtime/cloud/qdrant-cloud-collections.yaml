@@ -1,0 +1,9 @@
+qdrant_collections:
+  - name: appforge_docs
+    purpose: document chunks and summaries
+  - name: appforge_code
+    purpose: code summaries, file summaries, symbol summaries
+  - name: appforge_confluence
+    purpose: Confluence-derived chunks and summaries
+  - name: appforge_mixed_context
+    purpose: cross-source retrieval packs

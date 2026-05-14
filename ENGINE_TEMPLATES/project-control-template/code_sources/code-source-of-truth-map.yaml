@@ -1,0 +1,23 @@
+source_of_truth:
+  project_state:
+    canonical_location: "project-control/"
+
+  docs:
+    canonical_location: "docs/"
+
+  design_assets:
+    canonical_location: "design-assets/"
+
+  backend_code:
+    source_id: backend-main
+    canonical_location: null
+    canonical: false
+
+  frontend_mobile_code:
+    source_id: frontend-main
+    canonical_location: null
+    canonical: false
+
+  context_index:
+    canonical: false
+    purpose: "retrieval, summaries, embeddings, code maps, and search"

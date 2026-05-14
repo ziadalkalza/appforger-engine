@@ -1,0 +1,11 @@
+confluence_sources:
+  - id: product-space
+    provider: confluence
+    product: cloud_or_data_center
+    source_of_truth_mode: external_confluence
+    storage:
+      mode: rag_only
+    indexing:
+      rag_enabled: true
+      graph_enabled: false
+    sensitive_indexing_requires_approval: true

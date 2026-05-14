@@ -1,0 +1,11 @@
+project_name: TBD
+project_slug: TBD
+app_mode: TBD
+app_type: TBD
+backend: TBD
+source_of_truth:
+  project_control: project-control/
+  docs: docs/
+  design_assets: design-assets/
+  exports: exports/
+  local_only: local-only/
