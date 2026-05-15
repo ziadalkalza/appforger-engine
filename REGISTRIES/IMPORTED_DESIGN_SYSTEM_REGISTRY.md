@@ -1,4 +1,4 @@
-# Imported Design System Registry
+﻿# Imported Design System Registry
 
 Track all external design systems, design `.md` files, Figma UI kits, brand guides, and design skills used by the current app.
 
@@ -6,7 +6,7 @@ Do not use unregistered imports for implementation.
 
 | ID | Name | Type | Source | License status | Active? | Scope | Approval | Notes |
 |---|---|---|---|---|---|---|---|---|
-| DS-000 | AppForge Global Design System | Internal baseline | `DESIGN/global_design_system.md` | internal | yes | fallback design rules | approved | Always available unless overridden by project-specific rules or approved Figma. |
+| DS-000 | AppForge Global Design System | Internal baseline | `workflows/experience-design/design-workflow/global_design_system.md` | internal | yes | fallback design rules | approved | Always available unless overridden by project-specific rules or approved Figma. |
 
 ## Import entry template
 

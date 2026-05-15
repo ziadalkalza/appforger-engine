@@ -1,8 +1,8 @@
-task_id: TASK-IOS-LOGIN-001
+﻿task_id: TASK-IOS-LOGIN-001
 title: Implement login UI
 status: blocked
 owner_role: iOS Agent
 blocked_by: API_BASELINE_PENDING
-source_packet_path: project-control/EXECUTION_PACKETS/TASK-IOS-LOGIN-001.md
+source_packet_path: project-control/templates/packets/execution-packets/TASK-IOS-LOGIN-001.md
 next_action: Backend Lead must approve API baseline
 canonical_truth: project-control

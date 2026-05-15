@@ -20,16 +20,16 @@ It is designed to guide AI tools such as Codex, Claude, Cursor, Copilot, ChatGPT
 
 The engine includes:
 
-- skills (`SKILLS/`)
-- policies and guidance docs
-- templates (`TEMPLATES/`)
-- validators (`VALIDATION/`)
+- skills (`skills/`)
+- policies and guidance docs (`policies/`, `docs/`)
+- templates (`templates/specs/`, `templates/packets/`, `templates/engine/`)
+- validators (`validation/`)
 - Python command references and automation logic
-- MCP resources, prompts, and tools (`APPFORGE_MCP_SERVER/`)
+- MCP resources, prompts, tools, clients, and hosting assets (`mcp/`)
 
 ## What the MCP Does
 
-The MCP server lives in `APPFORGE_MCP_SERVER/` and uses the rest of this repository as its logic library.
+The MCP server lives in `mcp/` and uses the rest of this repository as its logic library.
 
 It exposes:
 
@@ -42,7 +42,7 @@ It exposes:
 Hosted/remote safety boundary:
 
 - The MCP does **not** execute user project actions in remote mode.
-- It returns plans and command references for the user’s AI client/model to run locally after user approval.
+- It returns plans and command references for the user's AI client/model to run locally after user approval.
 - Risky operations must be marked approval-required (for example: cleanup/delete/move actions, runtime volume deletion, Git push, raw code indexing, cloud provisioning, write-enabled integrations).
 
 ## What This Repository Provides
@@ -64,20 +64,166 @@ Hosted/remote safety boundary:
 
 ## Repository Structure
 
-Main folders in this repository:
+Root folders are domain buckets. Detailed files live inside context-specific subfolders rather than directly beside unrelated domains.
 
-- `START_HERE/` - onboarding and first-run guidance
-- `HOW_TO_USE_APPFORGE/` - practical usage docs and command references
-- `SKILLS/` - AppForger skill library
-- `TEMPLATES/` - reusable templates for specs, QA, releases, and routes
-- `REGISTRIES/` - engine registries and manifest/state catalogs
-- `APPFORGE_MCP_SERVER/` - MCP interface layer and deployment assets
-- `RUNTIME_INFRASTRUCTURE/` - runtime/storage policies and scripts
-- `DOC_SOURCE_INTEGRATIONS/` - documentation source integration policies
-- `GIT_PROVIDER_INTEGRATIONS/` - git provider integration boundaries/policies
-- `SOURCE_PIPELINES/` - source pipeline policies and orchestration
-- `INTEGRATION_STRATEGY_ADVISOR/` - integration decision/risk guidance
-- `VALIDATION/` - validation scripts and safety checks
+When a feature area has both general rules and app/provider-specific variants, it uses `generic/` plus `apps/`, `providers/`, or another domain-specific variant folder. When an area only has generic files, those files live directly in the feature folder instead of inside a `generic/` wrapper.
+
+```text
+docs/
+  getting-started/
+    start-here/
+    operator-guides/
+  runbooks/
+    backend/
+    failure-playbooks/
+  ai-clients/
+    generic/
+    providers/
+  collaboration/
+  document-management/
+  generated-app/
+
+integrations/
+  source-control/
+    generic/
+    github/
+      team-workflow/
+    gitlab/
+    bitbucket/
+  document-sources/
+    confluence/
+    google-drive/
+  design/
+    generic/
+    apps/
+  planning/
+  catalog/
+
+mcp/
+  interface/
+    server/
+    prompts/
+  clients/
+    examples/
+    configs/
+  hosting/
+    deployment/
+  sdk/
+  catalog/
+
+policies/
+  operations/
+  collaboration/
+  context/
+  delivery/
+  engineering/
+  providers/
+    provider-layer/
+      provider_profiles/
+        generic/
+        providers/
+        apps/
+  security/
+    external-tool-boundaries/
+      generic/
+      providers/
+      apps/
+
+runtime/
+  context/
+    context-backend/
+    apps/
+  execution/
+    generic/
+    local-models/
+    providers/
+  platform/
+    storage/
+      generic/
+      apps/
+  collaboration/
+
+skills/
+  product/
+  design/
+  implementation/
+    backend/
+      generic/
+      stacks/
+      apps/
+  quality/
+  delivery/
+  operations/
+  runtime/
+  context/
+    code-context/
+    context-backend/
+  integrations/
+    generic/
+    apps/
+  collaboration/
+  documentation/
+  onboarding/
+  providers/
+    generic/
+    providers/
+  governance/
+  architecture/
+  workflow/
+
+templates/
+  specs/
+  packets/
+  jobs/
+  ai-prompts/
+    generic/
+    providers/
+    apps/
+  engine/
+  examples/
+
+workflows/
+  product/
+  experience-design/
+  implementation/
+    backend/
+      generic/
+      stacks/
+      apps/
+  strategy/
+  delivery/
+  operations/
+
+validation/
+  audits/
+  domains/
+```
+
+Other root folders:
+
+- `registries/` - engine registries, manifests, baselines, and decision snapshots.
+- `scripts/` - standalone utility scripts.
+- `validation/` root files - executable validators, including `validation/validate_all.py`.
+
+Common path anchors:
+
+- Feature specs: `templates/specs/feature_spec_template.md`
+- Execution packets: `templates/packets/execution-packets/`
+- Code-agent packets: `templates/packets/code-agent-packets/`
+- Provider-specific code-agent packet adapters: `templates/packets/code-agent-packets/providers/`
+- AI prompts: `templates/ai-prompts/generic/`, `templates/ai-prompts/providers/`, `templates/ai-prompts/apps/`
+- MCP server: `mcp/interface/server/appforge_mcp_server.py`
+- MCP client examples: `mcp/clients/examples/`
+- MCP deployment assets: `mcp/hosting/deployment/`
+- Runtime storage: `runtime/platform/storage/`
+- Storage app setup: `runtime/platform/storage/apps/`
+- Context backend: `runtime/context/context-backend/`
+- Context storage app profiles: `runtime/context/apps/`
+- Provider runtimes: `runtime/execution/providers/`
+- Provider profiles: `policies/providers/provider-layer/provider_profiles/`
+- External tool boundaries: `policies/security/external-tool-boundaries/`
+- Source pipelines: `workflows/operations/source-pipelines/`
+- Integration strategy: `workflows/strategy/integration-strategy-advisor/`
 
 Note on naming:
 
@@ -88,19 +234,19 @@ Note on naming:
 From the parent directory that contains this repository folder:
 
 ```bash
-python appforge-engine/APPFORGE_MCP_SERVER/server/appforge_mcp_server.py --engine-root appforge-engine --transport stdio
+python appforge-engine/mcp/interface/server/appforge_mcp_server.py --engine-root appforge-engine --transport stdio
 ```
 
 From inside this repository root:
 
 ```bash
-python APPFORGE_MCP_SERVER/server/appforge_mcp_server.py --engine-root . --transport stdio
+python mcp/interface/server/appforge_mcp_server.py --engine-root . --transport stdio
 ```
 
 HTTP mode:
 
 ```bash
-python APPFORGE_MCP_SERVER/server/appforge_mcp_server.py --engine-root . --transport http --host 0.0.0.0 --port 8080
+python mcp/interface/server/appforge_mcp_server.py --engine-root . --transport http --host 0.0.0.0 --port 8080
 ```
 
 Health check (HTTP mode):
@@ -109,17 +255,17 @@ Health check (HTTP mode):
 
 ## Deploy Remotely
 
-Deploy the **entire repository**, not only `APPFORGE_MCP_SERVER/`.
+Deploy the **entire repository**, not only `mcp/`.
 
-- `APPFORGE_MCP_SERVER/` is the server layer.
+- `mcp/` is the server layer.
 - The rest of the repository is the logic library it serves.
 
 For hosted deployments, run in HTTP mode and use the provided deployment assets:
 
-- `APPFORGE_MCP_SERVER/deployment/docker/`
-- `APPFORGE_MCP_SERVER/deployment/digitalocean/`
-- `APPFORGE_MCP_SERVER/deployment/env/mcp.env.example`
-- `APPFORGE_MCP_SERVER/REMOTE_HOSTING_GUIDE.md`
+- `mcp/hosting/deployment/docker/`
+- `mcp/hosting/deployment/digitalocean/`
+- `mcp/hosting/deployment/env/mcp.env.example`
+- `mcp/REMOTE_HOSTING_GUIDE.md`
 
 Render-style hosting can use the same HTTP entrypoint pattern (container/web service running `appforge_mcp_server.py --transport http`).
 
@@ -140,7 +286,7 @@ Add your hosted MCP endpoint to an MCP-compatible client configuration.
 }
 ```
 
-Use your client’s exact MCP config format if it differs.
+Use your client's exact MCP config format if it differs.
 
 ## Use AppForger in a Project
 
@@ -201,7 +347,7 @@ Bug report:
 - Add/update `SKILL.md` when adding a workflow.
 - Add/update related policies/templates when behavior changes.
 - Add/update validators when new features are added.
-- Update `HOW_TO_USE_APPFORGE/` docs for user-facing behavior changes.
+- Update `docs/getting-started/operator-guides/` docs for user-facing behavior changes.
 - Run validation before opening a PR.
 
 ## Validation
@@ -209,10 +355,10 @@ Bug report:
 Run the validation suite before PR submission (from repo root):
 
 ```bash
-python VALIDATION/validate_all.py
+python validation/validate_all.py
 ```
 
-If your change touches a specific subsystem, also run targeted validators in `VALIDATION/`.
+If your change touches a specific subsystem, also run targeted validators in `validation/`.
 
 ## Operational vs Guidance Scope
 

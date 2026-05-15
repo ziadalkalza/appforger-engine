@@ -35,7 +35,7 @@ Compatible providers can include Codex, Claude Code, or an approved local code a
 Packet path example:
 
 ```text
-project-control/CODEX_WORK_PACKETS/TASK-IOS-LOGIN-001.md
+project-control/templates/packets/code-agent-packets/providers/codex/TASK-IOS-LOGIN-001.md
 ```
 
 The packet should now be understood as a provider-specific adaptation of a generic `CODE_AGENT_EXECUTION_PACKET`.

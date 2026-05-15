@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 from pathlib import Path
 import sys
 root = Path(__file__).resolve().parents[1]
@@ -15,7 +15,7 @@ for p in root.rglob('*'):
     if p.is_dir():
         continue
     rel=str(p.relative_to(root))
-    if rel == 'VALIDATION/validate_no_stale_root_placeholders.py':
+    if rel == 'validation/validate_no_stale_root_placeholders.py':
         continue
     for term in forbidden:
         if term in rel:

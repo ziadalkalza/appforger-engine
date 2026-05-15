@@ -1,4 +1,4 @@
-# Team Operations Backend Example
+﻿# Team Operations Backend Example
 
 This example shows how a team can use the Team Operations Backend for live state while keeping project-control as canonical truth.
 
@@ -12,4 +12,4 @@ Example query:
 "Show all frontend tasks blocked by API approval."
 
 Expected source link:
-`project-control/EXECUTION_PACKETS/TASK-IOS-LOGIN-001.md`
+`project-control/templates/packets/execution-packets/TASK-IOS-LOGIN-001.md`

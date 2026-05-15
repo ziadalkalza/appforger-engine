@@ -1,10 +1,10 @@
-# Pending Templates
+﻿# Pending Templates
 
 When AppForge produces a useful prompt, checklist, pattern, or reusable rule, save it here before promotion.
 
 ## Promotion rule
 
-Pending templates must be reviewed before moving into `TEMPLATES/`.
+Pending templates must be reviewed before moving into `templates/`.
 
 ## Template candidate
 

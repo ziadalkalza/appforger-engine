@@ -1,19 +1,19 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 from pathlib import Path
 import sys, subprocess
 ROOT = Path(__file__).resolve().parents[1]
 required = [
-    'OPERATIONAL_AUDIT/REPORTS/FINAL_APPFORGE_V1_REVIEW_REPORT.md',
-    'PROJECT_ONBOARDING_AND_INITIALIZATION/INITIALIZATION_GATE_POLICY.md',
-    'MODEL_AND_TOOL_AGNOSTIC_PROVIDER_LAYER/PROVIDER_AGNOSTIC_POLICY.md',
-    'PARALLEL_WORK_AND_SUB_AGENT_ORCHESTRATION/PARALLEL_WORK_POLICY.md',
-    'TEAM_OPERATIONS_BACKEND/TEAM_OPERATIONS_BACKEND_POLICY.md',
-    'PROJECT_DOCS_LIBRARY/PROJECT_DOCS_LIBRARY_POLICY.md',
-    'CONTEXT_BACKEND/SOURCE_OF_TRUTH_POLICY.md',
-    'ENGINE_TEMPLATES/workspace-template/docs/README.md',
-    'ENGINE_TEMPLATES/project-control-template/APPFORGE_PROJECT_PROFILE.md',
-    'CONTEXT_SYNC_AND_RETRIEVAL/code_context_sources/README.md',
-    'ENGINE_TEMPLATES/workspace-template/local-only/.env.local.example',
+    'validation/audits/operational-audit/REPORTS/FINAL_APPFORGE_V1_REVIEW_REPORT.md',
+    'workflows/product/project-onboarding/INITIALIZATION_GATE_POLICY.md',
+    'policies/providers/provider-layer/PROVIDER_AGNOSTIC_POLICY.md',
+    'policies/operations/parallel-agent-work/PARALLEL_WORK_POLICY.md',
+    'runtime/collaboration/team-operations-backend/TEAM_OPERATIONS_BACKEND_POLICY.md',
+    'docs/document-management/project-docs-library/PROJECT_DOCS_LIBRARY_POLICY.md',
+    'runtime/context/context-backend/SOURCE_OF_TRUTH_POLICY.md',
+    'templates/engine/workspace-template/docs/README.md',
+    'templates/engine/project-control-template/APPFORGE_PROJECT_PROFILE.md',
+    'workflows/operations/context-sync-retrieval/code_context_sources/README.md',
+    'templates/engine/workspace-template/local-only/.env.local.example',
 ]
 missing = [p for p in required if not (ROOT / p).exists()]
 if missing:

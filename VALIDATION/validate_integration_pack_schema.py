@@ -1,9 +1,9 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-TEMPLATE = ROOT / 'INTEGRATIONS' / 'INTEGRATION_PACK_TEMPLATE'
+TEMPLATE = ROOT / 'integrations/catalog' / 'INTEGRATION_PACK_TEMPLATE'
 required = [
     'README.md','BOUNDARY.md','CLARIFICATION_QUESTIONS.md','OFFICIAL_DOCS_RESEARCH.md',
     'SETUP_CHECKLIST.md','SECRETS_POLICY.md','COST_AND_RISK_REVIEW.md','SECURITY_PRIVACY_REVIEW.md',

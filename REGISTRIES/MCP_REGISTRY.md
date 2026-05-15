@@ -1,4 +1,4 @@
-# MCP Registry
+﻿# MCP Registry
 
 ## MCP principles
 
@@ -20,4 +20,4 @@ MCPs expose external context/tools to agents. Use the least powerful MCP permiss
 
 ## Future
 
-See `MCPS/future_engine_mcp_server_plan.md`.
+See `mcp/catalog/future_engine_mcp_server_plan.md`.

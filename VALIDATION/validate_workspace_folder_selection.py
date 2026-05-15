@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Validate conditional workspace folder generation."""
 from pathlib import Path
 import shutil
@@ -7,7 +7,7 @@ import sys
 import tempfile
 
 ENGINE = Path(__file__).resolve().parents[1]
-INIT = ENGINE / 'NEW_APP_INITIALIZER' / 'create_new_app.py'
+INIT = ENGINE / 'workflows/operations/new-app-initializer' / 'create_new_app.py'
 
 cases = [
     ('web_only', ['--app-type','web','--backend','none'], {'web'}, {'ios','android','mobile','backend'}),

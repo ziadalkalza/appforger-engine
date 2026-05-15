@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 import argparse, runpy, sys, os
 from pathlib import Path
 root = Path(__file__).resolve().parents[1]
@@ -22,7 +22,7 @@ optional = [
     'validate_appforger_mcp_server.py',
     'validate_integration_strategy_advisor.py',
 ]
-validators += [v for v in optional if (root / 'VALIDATION' / v).exists()]
+validators += [v for v in optional if (root / 'validation' / v).exists()]
 parser = argparse.ArgumentParser()
 parser.add_argument('--deep', action='store_true')
 parser.add_argument('--timeout', type=int, default=60, help='Reserved for subprocess validators.')
@@ -31,7 +31,7 @@ old_cwd = os.getcwd()
 os.chdir(root)
 try:
     for v in validators:
-        p = root / 'VALIDATION' / v
+        p = root / 'validation' / v
         print('RUN', v, flush=True)
         old_argv = sys.argv[:]
         sys.argv = [str(p)]

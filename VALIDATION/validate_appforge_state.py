@@ -1,8 +1,8 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 from pathlib import Path
 import sys
 engine = Path(__file__).resolve().parents[1]
-default_state = engine/'ENGINE_TEMPLATES/project-control-template/APPFORGE_PROJECT_STATUS.md'
+default_state = engine/'templates/engine/project-control-template/APPFORGE_PROJECT_STATUS.md'
 state_path = Path(sys.argv[1]) if len(sys.argv) > 1 else default_state
 if not state_path.exists():
     print(f'APPFORGE_PROJECT_STATUS.md is missing at {state_path}')

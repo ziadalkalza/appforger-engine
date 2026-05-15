@@ -1,12 +1,12 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 from pathlib import Path
 import sys
-root = Path(__file__).resolve().parents[2]
+root = Path(__file__).resolve().parents[1]
 engine = root / 'appforge-engine'
 checks = [
-    engine/'PROJECT_DOCS_LIBRARY'/'README.md',
-    engine/'ENGINE_TEMPLATES'/'workspace-template'/'docs'/'README.md',
-    engine/'ENGINE_TEMPLATES'/'project-control-template'/'REGISTRIES'/'DOCUMENT_LIBRARY_REGISTRY.md',
+    engine/'docs/document-management/project-docs-library'/'README.md',
+    engine/'templates/engine'/'workspace-template'/'docs'/'README.md',
+    engine/'templates/engine'/'project-control-template'/'registries'/'DOCUMENT_LIBRARY_REGISTRY.md',
 ]
 missing=[str(p) for p in checks if not p.exists()]
 if missing:

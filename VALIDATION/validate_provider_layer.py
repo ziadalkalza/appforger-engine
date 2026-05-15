@@ -1,15 +1,15 @@
-from pathlib import Path
+﻿from pathlib import Path
 import sys
 root = Path(__file__).resolve().parents[1]
 required = [
-    'MODEL_AND_TOOL_AGNOSTIC_PROVIDER_LAYER/README.md',
-    'MODEL_AND_TOOL_AGNOSTIC_PROVIDER_LAYER/PROVIDER_AGNOSTIC_POLICY.md',
-    'MODEL_AND_TOOL_AGNOSTIC_PROVIDER_LAYER/CAPABILITY_ROUTING_MODEL.md',
-    'MODEL_AND_TOOL_AGNOSTIC_PROVIDER_LAYER/provider_profiles/CHATGPT_PROFILE.md',
-    'MODEL_AND_TOOL_AGNOSTIC_PROVIDER_LAYER/provider_profiles/CODEX_PROFILE.md',
-    'MODEL_AND_TOOL_AGNOSTIC_PROVIDER_LAYER/provider_profiles/CLAUDE_CODE_PROFILE.md',
-    'EXECUTION_PACKETS/EXECUTION_PACKET_TEMPLATE.md',
-    'SKILLS/provider_skills/select_provider_for_task/SKILL.md',
+    'policies/providers/provider-layer/README.md',
+    'policies/providers/provider-layer/PROVIDER_AGNOSTIC_POLICY.md',
+    'policies/providers/provider-layer/CAPABILITY_ROUTING_MODEL.md',
+    'policies/providers/provider-layer/provider_profiles/providers/chatgpt/PROFILE.md',
+    'policies/providers/provider-layer/provider_profiles/providers/codex/PROFILE.md',
+    'policies/providers/provider-layer/provider_profiles/providers/claude/CODE_PROFILE.md',
+    'templates/packets/execution-packets/EXECUTION_PACKET_TEMPLATE.md',
+    'skills/providers/generic/select_provider_for_task/SKILL.md',
 ]
 missing = [p for p in required if not (root/p).exists()]
 if missing:

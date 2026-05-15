@@ -1,8 +1,8 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 from pathlib import Path
 import sys
 engine=Path(__file__).resolve().parents[1]
-text=(engine/'OPERATIONAL_AUDIT/CONTEXT_BACKEND_AUDIT.md').read_text(encoding='utf-8').lower()
+text=(engine/'validation/audits/operational-audit/CONTEXT_BACKEND_AUDIT.md').read_text(encoding='utf-8').lower()
 for term in ['optional','canonical','metadata','stale','secrets']:
  if term not in text:
   print(f'Missing context backend safety term: {term}')

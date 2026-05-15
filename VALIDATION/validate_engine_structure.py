@@ -1,9 +1,9 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 from pathlib import Path
 import sys
 engine=Path(__file__).resolve().parents[1]
 root=engine.parent
-checks=[engine/'ENGINE_TEMPLATES/project-control-template', engine/'ENGINE_TEMPLATES/workspace-template', engine/'NEW_APP_INITIALIZER/create_new_app.py']
+checks=[engine/'templates/engine/project-control-template', engine/'templates/engine/workspace-template', engine/'workflows/operations/new-app-initializer/create_new_app.py']
 missing=[str(p) for p in checks if not p.exists()]
 if missing:
  print('Missing required structure:')

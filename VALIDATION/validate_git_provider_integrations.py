@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
-required=['GIT_PROVIDER_INTEGRATIONS/README.md', 'GIT_PROVIDER_INTEGRATIONS/python/git_providers/base_provider.py', 'GIT_PROVIDER_INTEGRATIONS/python/git_providers/bitbucket_provider.py', 'GIT_PROVIDER_INTEGRATIONS/python/git_providers/url_normalizer.py', 'SKILLS/git_provider_skills/sync_bitbucket_code_source/SKILL.md']
+required=['integrations/source-control/generic/README.md', 'integrations/source-control/generic/python/git_providers/base_provider.py', 'integrations/source-control/bitbucket/python/git_providers/bitbucket_provider.py', 'integrations/source-control/generic/python/git_providers/url_normalizer.py', 'skills/integrations/apps/bitbucket/sync_code_source/SKILL.md']
 missing=[r for r in required if not (root/r).exists()]
 if missing:
     print("missing:", missing); raise SystemExit(1)

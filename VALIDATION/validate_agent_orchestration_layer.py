@@ -1,14 +1,14 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 from pathlib import Path
 import sys
 root = Path(__file__).resolve().parents[1]
 required = [
-    'PARALLEL_WORK_AND_SUB_AGENT_ORCHESTRATION/README.md',
-    'PARALLEL_WORK_AND_SUB_AGENT_ORCHESTRATION/AGENT_BRAND_FAMILY_POLICY.md',
-    'PARALLEL_WORK_AND_SUB_AGENT_ORCHESTRATION/RECONCILIATION_RECORD_POLICY.md',
-    'EXECUTION_PACKETS/SUB_AGENT_EXECUTION_PACKET.md',
-    'EXECUTION_PACKETS/PARALLEL_WORK_PLAN_TEMPLATE.md',
-    'SKILLS/agent_orchestration_skills/create_parallel_work_plan/SKILL.md',
+    'policies/operations/parallel-agent-work/README.md',
+    'policies/operations/parallel-agent-work/AGENT_BRAND_FAMILY_POLICY.md',
+    'policies/operations/parallel-agent-work/RECONCILIATION_RECORD_POLICY.md',
+    'templates/packets/execution-packets/SUB_AGENT_EXECUTION_PACKET.md',
+    'templates/packets/execution-packets/PARALLEL_WORK_PLAN_TEMPLATE.md',
+    'skills/operations/agent_orchestration_skills/create_parallel_work_plan/SKILL.md',
 ]
 missing=[p for p in required if not (root/p).exists()]
 if missing:
