@@ -54,10 +54,16 @@ runtime/backend-platforms/supabase/ # Supabase runtime setup
 
 ## Running the MCP locally
 
-From inside this repository root:
+The MCP should be configured once against a shared engine checkout, not copied into each app project. From inside this repository root:
 
 ```bash
 python mcp/server/appforge_mcp_server.py --engine-root . --transport stdio
+```
+
+From an MCP client config, prefer absolute paths:
+
+```bash
+python /absolute/path/to/appforger-engine/mcp/server/appforge_mcp_server.py --engine-root /absolute/path/to/appforger-engine --transport stdio
 ```
 
 HTTP mode:

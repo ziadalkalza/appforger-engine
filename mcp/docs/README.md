@@ -29,16 +29,18 @@ Local MCP mode may inspect the engine and optionally a workspace, but destructiv
 ## Quick local run
 
 ```bash
-python appforger-engine/mcp/server/appforge_mcp_server.py \
-  --engine-root appforger-engine \
+python /absolute/path/to/appforger-engine/mcp/server/appforge_mcp_server.py \
+  --engine-root /absolute/path/to/appforger-engine \
   --transport stdio
 ```
+
+Install the engine once and point your MCP client at that path. Do not place an MCP copy inside each app project.
 
 ## Quick HTTP run
 
 ```bash
-python appforger-engine/mcp/server/appforge_mcp_server.py \
-  --engine-root appforger-engine \
+python /absolute/path/to/appforger-engine/mcp/server/appforge_mcp_server.py \
+  --engine-root /absolute/path/to/appforger-engine \
   --transport http \
   --host 0.0.0.0 \
   --port 8080
@@ -55,16 +57,16 @@ Appforger MCP is a server interface over the Appforger engine. It exposes manife
 Typical local stdio run:
 
 ```bash
-python appforger-engine/mcp/server/appforge_mcp_server.py \
-  --engine-root appforger-engine \
+python /absolute/path/to/appforger-engine/mcp/server/appforge_mcp_server.py \
+  --engine-root /absolute/path/to/appforger-engine \
   --transport stdio
 ```
 
 Typical local HTTP run:
 
 ```bash
-python appforger-engine/mcp/server/appforge_mcp_server.py \
-  --engine-root appforger-engine \
+python /absolute/path/to/appforger-engine/mcp/server/appforge_mcp_server.py \
+  --engine-root /absolute/path/to/appforger-engine \
   --transport http \
   --host 0.0.0.0 \
   --port 8080

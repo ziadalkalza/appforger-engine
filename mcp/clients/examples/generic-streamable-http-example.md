@@ -1,8 +1,8 @@
 # Generic HTTP MCP Example
 
 ```bash
-python appforger-engine/mcp/server/appforge_mcp_server.py \
-  --engine-root appforger-engine \
+python /absolute/path/to/appforger-engine/mcp/server/appforge_mcp_server.py \
+  --engine-root /absolute/path/to/appforger-engine \
   --transport http \
   --host 0.0.0.0 \
   --port 8080

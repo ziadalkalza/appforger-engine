@@ -4,15 +4,19 @@ from manifest_loader import load_feature_manifest
 from appforge_risk_classifier import classify_action
 
 
+def _quote(value: str) -> str:
+    return '"' + value.replace('"', '\\"') + '"'
+
+
 def tool_schemas() -> list[dict]:
     return [
         {"name":"list_features","description":"List AppForger feature manifest entries.","inputSchema":{"type":"object","properties":{}}},
         {"name":"list_skills","description":"List AppForger SKILL.md resources.","inputSchema":{"type":"object","properties":{}}},
         {"name":"search_appforge_resources","description":"Keyword search manifest-selected resources.","inputSchema":{"type":"object","properties":{"query":{"type":"string"},"limit":{"type":"integer"}},"required":["query"]}},
         {"name":"get_resource","description":"Read a manifest-selected AppForger resource by URI.","inputSchema":{"type":"object","properties":{"uri":{"type":"string"}},"required":["uri"]}},
-        {"name":"create_setup_plan","description":"Return setup command and approval notes. Does not execute.","inputSchema":{"type":"object","properties":{"project_name":{"type":"string"},"adapter":{"type":"string"}}}},
-        {"name":"create_adoption_plan","description":"Return adoption planning guidance. Does not move files.","inputSchema":{"type":"object","properties":{"source_hint":{"type":"string"}}}},
-        {"name":"create_cleanup_plan","description":"Return cleanup command reference and risk metadata. Does not delete.","inputSchema":{"type":"object","properties":{"mode":{"type":"string"}}}},
+        {"name":"create_setup_plan","description":"Return setup command and approval notes. Does not execute.","inputSchema":{"type":"object","properties":{"project_name":{"type":"string"},"adapter":{"type":"string"},"target":{"type":"string","description":"Project root selected by the user or AI client. Defaults to the MCP workspace root if configured, otherwise current directory."}}}},
+        {"name":"create_adoption_plan","description":"Return adoption planning guidance. Does not move files.","inputSchema":{"type":"object","properties":{"source_hint":{"type":"string"},"target":{"type":"string","description":"Project root selected by the user or AI client. Defaults to the MCP workspace root if configured, otherwise current directory."}}}},
+        {"name":"create_cleanup_plan","description":"Return cleanup command reference and risk metadata. Does not delete.","inputSchema":{"type":"object","properties":{"mode":{"type":"string"},"target":{"type":"string","description":"Project root selected by the user or AI client. Defaults to the MCP workspace root if configured, otherwise current directory."}}}},
         {"name":"create_context_sync_plan","description":"Return source pipeline/code/docs sync command reference. Does not run.","inputSchema":{"type":"object","properties":{"source_id":{"type":"string"},"storage_mode":{"type":"string"}}}},
         {"name":"classify_action_risk","description":"Classify workflow or command risk.","inputSchema":{"type":"object","properties":{"text":{"type":"string"}},"required":["text"]}},
         {"name":"create_integration_strategy_plan","description":"Return an integration strategy advisor plan. Does not create integration code or execute actions.","inputSchema":{"type":"object","properties":{"integration":{"type":"string"},"goal":{"type":"string"},"needs_persistent_rag":{"type":"boolean"},"needs_graph":{"type":"boolean"}}}},
@@ -21,9 +25,16 @@ def tool_schemas() -> list[dict]:
 
 
 class ToolProvider:
-    def __init__(self, engine_root: Path, resource_provider):
+    def __init__(self, engine_root: Path, resource_provider, workspace_root: Path | None = None):
         self.engine_root = engine_root
         self.resources = resource_provider
+        self.workspace_root = workspace_root
+
+    def _target(self, args: dict) -> str:
+        return str(args.get("target") or self.workspace_root or ".")
+
+    def _engine_script(self, *parts: str) -> str:
+        return str(self.engine_root.joinpath(*parts))
 
     def call(self, name: str, args: dict | None = None) -> dict:
         args = args or {}
@@ -42,23 +53,29 @@ class ToolProvider:
         if name == "create_setup_plan":
             adapter = args.get("adapter", "ask")
             project = args.get("project_name", "<project name>")
-            cmd = f"python appforger-engine/workflows/operations/new-app-initializer/setup_appforge_project.py --target . --name \"{project}\""
+            target = self._target(args)
+            script = self._engine_script("workflows", "operations", "new-app-initializer", "setup_appforge_project.py")
+            cmd = f"python {_quote(script)} --target {_quote(target)} --name {_quote(project)}"
             if adapter != "ask":
-                cmd += f" --agent-adapters {adapter}"
+                cmd += f" --agent-adapters {_quote(adapter)}"
             risk = classify_action(cmd)
             risk["risk"] = "medium"
             risk["requires_user_approval"] = True
-            return {"workflow":"setup_appforge_project", "recommended_command": cmd, **risk}
+            return {"workflow":"setup_appforge_project", "engine_root": str(self.engine_root), "target": target, "recommended_command": cmd, **risk}
         if name == "create_adoption_plan":
-            cmd = "python appforger-engine/workflows/operations/project-adoption-git-boundaries/scripts/appforge_adopt.py --target . scan"
-            return {"workflow":"adopt_existing_project", "recommended_command": cmd, **classify_action("adopt existing project scan")}
+            target = self._target(args)
+            script = self._engine_script("workflows", "operations", "project-adoption-git-boundaries", "scripts", "appforge_adopt.py")
+            cmd = f"python {_quote(script)} --target {_quote(target)} scan"
+            return {"workflow":"adopt_existing_project", "engine_root": str(self.engine_root), "target": target, "recommended_command": cmd, **classify_action("adopt existing project scan")}
         if name == "create_cleanup_plan":
             mode = args.get("mode", "remove-engine")
-            cmd = f"python appforger-engine/workflows/operations/workspace-artifact-lifecycle/scripts/appforge_clean.py --target . --mode {mode}"
+            target = self._target(args)
+            script = self._engine_script("workflows", "operations", "workspace-artifact-lifecycle", "scripts", "appforge_clean.py")
+            cmd = f"python {_quote(script)} --target {_quote(target)} --mode {_quote(mode)}"
             risk = classify_action(cmd)
             risk["risk"] = "high"
             risk["requires_user_approval"] = True
-            return {"workflow":"clean_appforge_project", "recommended_command": cmd, **risk}
+            return {"workflow":"clean_appforge_project", "engine_root": str(self.engine_root), "target": target, "recommended_command": cmd, **risk}
         if name == "create_context_sync_plan":
             source = args.get("source_id", "<source_id>")
             storage = args.get("storage_mode")

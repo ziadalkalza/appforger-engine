@@ -2,7 +2,7 @@
   "mcpServers": {
     "appforger": {
       "command": "python",
-      "args": ["appforger-engine/mcp/server/appforge_mcp_server.py", "--engine-root", "appforger-engine", "--transport", "stdio"]
+      "args": ["/absolute/path/to/appforger-engine/mcp/server/appforge_mcp_server.py", "--engine-root", "/absolute/path/to/appforger-engine", "--transport", "stdio"]
     }
   }
 }

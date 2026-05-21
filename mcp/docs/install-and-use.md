@@ -2,16 +2,19 @@
 
 ## Local usage
 
-1. Extract Appforger so the workspace contains `appforger-engine/`.
+1. Install or extract `appforger-engine/` once in a stable location outside your app repositories.
 2. Run the local stdio server:
 
 ```bash
-python appforger-engine/mcp/server/appforge_mcp_server.py \
-  --engine-root appforger-engine \
+python /absolute/path/to/appforger-engine/mcp/server/appforge_mcp_server.py \
+  --engine-root /absolute/path/to/appforger-engine \
   --transport stdio
 ```
 
 3. Point your MCP-capable client at that command.
+4. Open any app project separately in the AI client, wherever that project lives. The client uses Appforger MCP for plans/resources and applies approved work in the selected project root.
+
+Do not copy the MCP server into each app project. The MCP server belongs to the shared engine; project-specific files belong in the app project's own workspace.
 
 ## Remote hosted usage
 
@@ -34,11 +37,11 @@ The model calls MCP prompts/tools:
 
 ## What setup means
 
-1. Place or host `appforger-engine/`.
+1. Place or host one shared `appforger-engine/`.
 2. Run the MCP server from `mcp/server/appforge_mcp_server.py`.
 3. Point your MCP-capable client at the stdio command or HTTP endpoint.
 4. The model can then read Appforger resources/prompts/tools.
-5. The MCP returns local commands and risk flags; it does not run project actions in hosted mode.
+5. The MCP returns local commands and risk flags using the shared engine path and a separate project target chosen by the user/client; it does not run project actions in hosted mode.
 
 ## New Appforger MCP feature requests
 

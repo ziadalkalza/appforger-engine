@@ -14,10 +14,11 @@ from auth import check_http_authorization
 
 
 class AppForgerMCP:
-    def __init__(self, engine_root: Path):
+    def __init__(self, engine_root: Path, workspace_root: Path | None = None):
         self.engine_root = engine_root.resolve()
+        self.workspace_root = workspace_root.resolve() if workspace_root else None
         self.resources = ResourceProvider(self.engine_root)
-        self.tools = ToolProvider(self.engine_root, self.resources)
+        self.tools = ToolProvider(self.engine_root, self.resources, self.workspace_root)
 
     def handle(self, req: dict) -> dict:
         rid = req.get("id")
@@ -109,12 +110,13 @@ def make_handler(server: AppForgerMCP):
 def main():
     ap = argparse.ArgumentParser(description="AppForger MCP logic server. Remote mode returns plans/commands only; it does not execute project actions.")
     ap.add_argument("--engine-root", default=str(Path(__file__).resolve().parents[3]))
-    ap.add_argument("--workspace-root", default=None, help="Optional local workspace root for future local mode; not used for remote execution.")
+    ap.add_argument("--workspace-root", default=None, help="Optional default project root for local plan tools. If omitted, tools use the caller-provided target or current directory.")
     ap.add_argument("--transport", choices=["stdio","http"], default="stdio")
     ap.add_argument("--host", default="127.0.0.1")
     ap.add_argument("--port", type=int, default=8080)
     args = ap.parse_args()
-    server = AppForgerMCP(Path(args.engine_root))
+    workspace_root = Path(args.workspace_root) if args.workspace_root else None
+    server = AppForgerMCP(Path(args.engine_root), workspace_root)
     if args.transport == "stdio":
         run_stdio(server)
     else:

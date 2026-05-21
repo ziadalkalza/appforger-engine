@@ -4,19 +4,21 @@ The Appforger MCP server exposes Appforger logic to MCP-capable clients. It is g
 
 ## Setup
 
+Install the engine once in a stable location and configure clients to point at that shared path. The MCP server is part of the engine, not part of each app project.
+
 Local stdio:
 
 ```bash
-python appforger-engine/mcp/server/appforge_mcp_server.py \
-  --engine-root appforger-engine \
+python /absolute/path/to/appforger-engine/mcp/server/appforge_mcp_server.py \
+  --engine-root /absolute/path/to/appforger-engine \
   --transport stdio
 ```
 
 Local HTTP:
 
 ```bash
-python appforger-engine/mcp/server/appforge_mcp_server.py \
-  --engine-root appforger-engine \
+python /absolute/path/to/appforger-engine/mcp/server/appforge_mcp_server.py \
+  --engine-root /absolute/path/to/appforger-engine \
   --transport http \
   --host 0.0.0.0 \
   --port 8080
