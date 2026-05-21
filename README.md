@@ -31,6 +31,9 @@ mcp/deployment/                     # Docker, env, and hosting deployment assets
 mcp/clients/examples/               # Client configuration examples for connecting to the MCP
 mcp/docs/                           # MCP install/use/security/hosting docs
 
+workflows/operations/project-control-modules/
+                                    # Adds optional project-control sections after onboarding changes
+
 ai-models/codex/                    # Codex-specific docs, policies, runtime, templates, and skills
 ai-models/claude/                   # Claude-specific docs, policies, runtime, templates, and skills
 ai-models/chatgpt/                  # ChatGPT-specific docs, policies, runtime, templates, and skills

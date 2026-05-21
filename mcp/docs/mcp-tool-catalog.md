@@ -9,6 +9,7 @@ The Appforger MCP exposes read/plan/search tools by default:
 - `create_setup_plan`
 - `create_adoption_plan`
 - `create_cleanup_plan`
+- `create_project_control_module_plan`
 - `create_context_sync_plan`
 - `classify_action_risk`
 
@@ -18,6 +19,10 @@ Setup, adoption, and cleanup plan tools separate the shared engine location from
 
 - `engine_root` is where the reusable Appforger engine is installed.
 - `target` is the project root selected by the user or AI client. It can be any local path, not a required folder layout. If omitted, tools use the configured `--workspace-root`; if that is also omitted, command plans use `.` for the AI client's current working directory.
+
+## create_project_control_module_plan
+
+Creates a command plan for adding optional `project-control/` sections after an onboarding answer or later project change requires them. Example: when a project changes from single-user to team mode, request the `team` module instead of copying the entire project-control template.
 
 ## create_feature_request_issue_plan
 

@@ -14,9 +14,10 @@ def tool_schemas() -> list[dict]:
         {"name":"list_skills","description":"List AppForger SKILL.md resources.","inputSchema":{"type":"object","properties":{}}},
         {"name":"search_appforge_resources","description":"Keyword search manifest-selected resources.","inputSchema":{"type":"object","properties":{"query":{"type":"string"},"limit":{"type":"integer"}},"required":["query"]}},
         {"name":"get_resource","description":"Read a manifest-selected AppForger resource by URI.","inputSchema":{"type":"object","properties":{"uri":{"type":"string"}},"required":["uri"]}},
-        {"name":"create_setup_plan","description":"Return setup command and approval notes. Does not execute.","inputSchema":{"type":"object","properties":{"project_name":{"type":"string"},"adapter":{"type":"string"},"target":{"type":"string","description":"Project root selected by the user or AI client. Defaults to the MCP workspace root if configured, otherwise current directory."}}}},
+        {"name":"create_setup_plan","description":"Return setup command and approval notes. Does not execute.","inputSchema":{"type":"object","properties":{"project_name":{"type":"string"},"adapter":{"type":"string"},"target":{"type":"string","description":"Project root selected by the user or AI client. Defaults to the MCP workspace root if configured, otherwise current directory."},"assets":{"type":"boolean","description":"Compatibility flag; generic assets/ is created by default."},"design_assets":{"type":"boolean","description":"Create assets/design/."},"include_local_only":{"type":"boolean","description":"Create local-only/ and local private config files."}}}},
         {"name":"create_adoption_plan","description":"Return adoption planning guidance. Does not move files.","inputSchema":{"type":"object","properties":{"source_hint":{"type":"string"},"target":{"type":"string","description":"Project root selected by the user or AI client. Defaults to the MCP workspace root if configured, otherwise current directory."}}}},
         {"name":"create_cleanup_plan","description":"Return cleanup command reference and risk metadata. Does not delete.","inputSchema":{"type":"object","properties":{"mode":{"type":"string"},"target":{"type":"string","description":"Project root selected by the user or AI client. Defaults to the MCP workspace root if configured, otherwise current directory."}}}},
+        {"name":"create_project_control_module_plan","description":"Return a command to add optional project-control modules after onboarding changes. Does not execute.","inputSchema":{"type":"object","properties":{"modules":{"type":"array","items":{"type":"string"}},"target":{"type":"string","description":"Project root selected by the user or AI client. Defaults to the MCP workspace root if configured, otherwise current directory."}},"required":["modules"]}},
         {"name":"create_context_sync_plan","description":"Return source pipeline/code/docs sync command reference. Does not run.","inputSchema":{"type":"object","properties":{"source_id":{"type":"string"},"storage_mode":{"type":"string"}}}},
         {"name":"classify_action_risk","description":"Classify workflow or command risk.","inputSchema":{"type":"object","properties":{"text":{"type":"string"}},"required":["text"]}},
         {"name":"create_integration_strategy_plan","description":"Return an integration strategy advisor plan. Does not create integration code or execute actions.","inputSchema":{"type":"object","properties":{"integration":{"type":"string"},"goal":{"type":"string"},"needs_persistent_rag":{"type":"boolean"},"needs_graph":{"type":"boolean"}}}},
@@ -58,6 +59,12 @@ class ToolProvider:
             cmd = f"python {_quote(script)} --target {_quote(target)} --name {_quote(project)}"
             if adapter != "ask":
                 cmd += f" --agent-adapters {_quote(adapter)}"
+            if args.get("assets"):
+                cmd += " --assets"
+            if args.get("design_assets"):
+                cmd += " --design-assets"
+            if args.get("include_local_only"):
+                cmd += " --include-local-only"
             risk = classify_action(cmd)
             risk["risk"] = "medium"
             risk["requires_user_approval"] = True
@@ -76,6 +83,18 @@ class ToolProvider:
             risk["risk"] = "high"
             risk["requires_user_approval"] = True
             return {"workflow":"clean_appforge_project", "engine_root": str(self.engine_root), "target": target, "recommended_command": cmd, **risk}
+        if name == "create_project_control_module_plan":
+            modules = args.get("modules") or []
+            if isinstance(modules, str):
+                modules = [m.strip() for m in modules.split(",") if m.strip()]
+            target = self._target(args)
+            script = self._engine_script("workflows", "operations", "project-control-modules", "appforge_project_control_module.py")
+            module_flags = " ".join(f"--module {_quote(str(m))}" for m in modules)
+            cmd = f"python {_quote(script)} --target {_quote(target)} enable {module_flags}".strip()
+            risk = classify_action(cmd)
+            risk["risk"] = "medium"
+            risk["requires_user_approval"] = True
+            return {"workflow":"enable_project_control_modules", "engine_root": str(self.engine_root), "target": target, "modules": modules, "recommended_command": cmd, **risk}
         if name == "create_context_sync_plan":
             source = args.get("source_id", "<source_id>")
             storage = args.get("storage_mode")

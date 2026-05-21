@@ -14,8 +14,9 @@ backend_stack: "none"
 create_shared_folders:
   project_control: true
   docs: true
-  design_assets: true
+  assets: true
+  design_assets: false
   exports: true
-  local_only: true
+  local_only: false
 
 # Implementation folders are generated conditionally from app_type, mobile_strategy, and backend_stack.

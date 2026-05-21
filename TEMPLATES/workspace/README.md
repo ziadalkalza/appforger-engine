@@ -2,17 +2,19 @@
 
 The Appforger zip is engine-only. This folder describes the workspace that onboarding/setup creates around the engine.
 
-## Always-created shared folders
+## Minimal shared folders
 
 ```text
 my-app-workspace/
-  appforger-engine/
   project-control/
   docs/
-  design-assets/
+  assets/
   exports/
-  local-only/
 ```
+
+`assets/` is generic and starts empty. If design assets are requested during onboarding, create `assets/design/`. Other asset categories should live under `assets/<category>/` only when needed.
+
+`local-only/` is optional. Create it only when onboarding or a later workflow requires private local config, sandbox work, failed outputs, or local-only mirrors.
 
 ## Conditional implementation folders
 

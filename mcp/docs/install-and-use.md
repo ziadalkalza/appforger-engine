@@ -35,6 +35,8 @@ The model calls MCP prompts/tools:
 3. Returns the local command to run.
 4. Flags any risky action before execution.
 
+Initial setup creates only core project-control driver files and minimal workspace folders. `assets/` starts as an empty generic folder; optional sections such as `assets/design/`, `local-only/`, team, runtime, or context are added only when onboarding answers activate them. Later changes, such as switching from single-user to team mode, should use the project-control module plan instead of copying every optional folder.
+
 ## What setup means
 
 1. Place or host one shared `appforger-engine/`.

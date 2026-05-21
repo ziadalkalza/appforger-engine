@@ -6,7 +6,7 @@ source_of_truth:
     canonical_location: "docs/"
 
   design_assets:
-    canonical_location: "design-assets/"
+    canonical_location: "assets/design/"
 
   backend_code:
     source_id: backend-main

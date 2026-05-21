@@ -45,7 +45,7 @@ def copytree_contents(src: Path, dst: Path) -> None:
             shutil.copy2(item, target)
 
 
-def add_common_workspace_dirs(target: Path) -> None:
+def add_common_workspace_dirs(target: Path, include_design_assets: bool, include_local_only: bool) -> None:
     common_dirs = [
         "docs/meeting-notes",
         "docs/product",
@@ -60,30 +60,21 @@ def add_common_workspace_dirs(target: Path) -> None:
         "docs/imports",
         "docs/summaries",
         "docs/archive",
-        "design-assets/approved",
-        "design-assets/pending",
-        "design-assets/archived",
+        "assets",
         "exports/figma",
         "exports/screenshots",
         "exports/qa",
         "exports/reports",
-        "exports/drafts",
         "exports/sandbox-reports",
-        "local-only/drafts",
-        "local-only/debug",
-        "local-only/failed-generations",
-        "local-only/drafts/html-prototypes",
-        "local-only/drafts/figma-notes",
-        "local-only/drafts/image-generations",
-        "local-only/drafts/code-agent-experiments",
-        "local-only/drafts/backend-experiments",
-        "local-only/drafts/package-experiments",
-        "local-only/sandbox/web-preview",
-        "local-only/sandbox/api-mock",
-        "local-only/sandbox/ui-mock",
-        "local-only/sandbox/package-tests",
-        "local-only/sandbox/backend-experiments",
     ]
+    if include_design_assets:
+        common_dirs.extend([
+            "assets/design/approved",
+            "assets/design/pending",
+            "assets/design/archived",
+        ])
+    if include_local_only:
+        common_dirs.append("local-only")
     for d in common_dirs:
         (target / d).mkdir(parents=True, exist_ok=True)
 
@@ -151,6 +142,9 @@ def main() -> None:
     ap.add_argument("--include-ios", action="store_true")
     ap.add_argument("--include-android", action="store_true")
     ap.add_argument("--include-mobile", action="store_true")
+    ap.add_argument("--include-assets", action="store_true")
+    ap.add_argument("--include-design-assets", action="store_true")
+    ap.add_argument("--include-local-only", action="store_true")
     args = ap.parse_args()
 
     engine = Path(__file__).resolve().parents[3]
@@ -159,7 +153,7 @@ def main() -> None:
 
     templates = engine / "templates"
     copytree_contents(templates / "project-control", target / "project-control")
-    add_common_workspace_dirs(target)
+    add_common_workspace_dirs(target, args.include_design_assets, args.include_local_only)
 
     impl_dirs = resolve_implementation_dirs(
         args.app_type,
@@ -208,7 +202,10 @@ def main() -> None:
         f"Created from the AppForger v1 engine-only package.\n\n"
         f"The reusable engine lives in `appforger-engine/`. Project-specific state lives in `project-control/`.\n\n"
         f"Generated implementation folders: `{', '.join(sorted(impl_dirs)) or 'none'}`.\n\n"
-        f"Shared folders: `docs/`, `design-assets/`, `exports/`, `local-only/`.\n",
+        f"Shared folders: `docs/`, `exports/`"
+        f", `assets/`"
+        f"{', `assets/design/`' if args.include_design_assets else ''}"
+        f"{', `local-only/`' if args.include_local_only else ''}.\n",
         encoding="utf-8",
     )
 

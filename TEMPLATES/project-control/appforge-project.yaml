@@ -6,6 +6,7 @@ backend: TBD
 source_of_truth:
   project_control: project-control/
   docs: docs/
-  design_assets: design-assets/
+  assets: assets/
+  design_assets: assets/design/
   exports: exports/
   local_only: local-only/

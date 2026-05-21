@@ -3,7 +3,8 @@ shared_project_control_repo:
   include:
     project_control: true
     docs: true
-    design_assets: true
+    assets: false
+    design_assets: false
     exports: true
   exclude:
     - appforger-engine/

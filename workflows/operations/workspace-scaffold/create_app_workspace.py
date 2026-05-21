@@ -25,7 +25,7 @@ def main():
     workspace = parent / f"{name}-workspace"
     workspace.mkdir(parents=True, exist_ok=True)
 
-    for folder in ["backend", "ios", "android", "design-assets", "exports", "local-only"]:
+    for folder in ["backend", "ios", "android", "exports"]:
         (workspace / folder).mkdir(exist_ok=True)
 
     current_appforge = Path(__file__).resolve().parents[3]
