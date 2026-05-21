@@ -1,0 +1,12 @@
+services:
+  appforger-mcp:
+    build:
+      context: ../../..
+      dockerfile: appforger-engine/mcp/deployment/docker/Dockerfile
+    ports:
+      - "8080:8080"
+    env_file:
+      - ../env/mcp.env.example
+    environment:
+      APPFORGER_MCP_EXECUTION_MODE: guide_only
+      APPFORGER_MCP_ALLOW_PROJECT_EXECUTION: "false"

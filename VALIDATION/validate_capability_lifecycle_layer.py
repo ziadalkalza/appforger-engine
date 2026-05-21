@@ -1,15 +1,15 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 from pathlib import Path
 import sys
 ROOT = Path(__file__).resolve().parents[1]
 required = [
- 'policies/providers/connector-mcp-skill-lifecycle/LIFECYCLE_STATUS_MODEL.md',
- 'policies/providers/connector-mcp-skill-lifecycle/SKILL_LIFECYCLE_POLICY.md',
- 'policies/providers/connector-mcp-skill-lifecycle/MCP_LIFECYCLE_POLICY.md',
- 'policies/providers/connector-mcp-skill-lifecycle/CONNECTOR_LIFECYCLE_POLICY.md',
- 'registries/CONNECTOR_LIFECYCLE_REGISTRY.md',
- 'registries/MCP_LIFECYCLE_REGISTRY.md',
- 'registries/SKILL_LIFECYCLE_REGISTRY.md',
+ 'policies/provider-adapters/connector-mcp-skill-lifecycle/lifecycle-status-model.md',
+ 'ai-models/chatgpt/policies/connector-mcp-skill-lifecycle/skill-lifecycle-policy.md',
+ 'policies/source-control/github/connector-mcp-skill-lifecycle/mcp-lifecycle-policy.md',
+ 'integrations/backend-platforms/supabase/policies/connector-mcp-skill-lifecycle/connector-lifecycle-policy.md',
+ 'registries/project-control/connector-lifecycle-registry.md',
+ 'registries/project-control/mcp-lifecycle-registry.md',
+ 'registries/project-control/skill-lifecycle-registry.md',
 ]
 missing=[p for p in required if not (ROOT/p).exists()]
 if missing:

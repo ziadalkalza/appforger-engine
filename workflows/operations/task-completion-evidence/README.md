@@ -1,6 +1,6 @@
 # Task Completion and Evidence
 
-This folder defines how AppForge decides whether a task is merely saved, partially complete, ready for review, verified, manually closed, or reopened.
+This folder defines how Appforger decides whether a task is merely saved, partially complete, ready for review, verified, manually closed, or reopened.
 
 Core rule:
 

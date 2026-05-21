@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 from pathlib import Path
 import sys
 
@@ -15,13 +15,13 @@ def has_text(path, needles):
 errors = []
 
 if "frontend" in state or "native" in state:
-    if not has_text("registries/DESIGN_BASELINE_REGISTRY.md", ["approved", "baseline"]):
+    if not has_text("registries/project-control/design-baseline-registry.md", ["approved", "baseline"]):
         errors.append("Frontend stage requires an approved design baseline.")
-    if not has_text("registries/API_REGISTRY.md", ["approved", "contract", "endpoint"]):
+    if not has_text("registries/project-control/api-registry.md", ["approved", "contract", "endpoint"]):
         errors.append("Frontend stage requires an API contract or an explicit UI-only exception.")
 
 if "backend" in state:
-    if not has_text("workflows/implementation/backend/generic/backend_stack_selection.md", ["supabase", "fastapi", "postgres"]):
+    if not has_text("workflows/experience-design/backend/generic/backend-stack-selection.md", ["supabase", "fastapi", "postgres"]):
         errors.append("Backend stage requires backend stack selection.")
 
 if errors:

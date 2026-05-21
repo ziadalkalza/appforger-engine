@@ -1,4 +1,0 @@
-﻿#!/bin/sh
-# Optional AppForge local hook: run lightweight validation after commit.
-# Install manually by copying to .git/hooks/post-commit and making executable.
-python appforge-engine/validation/validate_automation_layer.py || exit 0

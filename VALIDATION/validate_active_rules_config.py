@@ -1,13 +1,13 @@
-﻿from pathlib import Path
+from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
-pc = ROOT/'templates/engine'/'project-control-template'
+pc = ROOT/'templates'/'project-control'
 required = [
-    'PROJECT_INITIALIZATION_REGISTRY.md',
-    'ACTIVE_FEATURES_REGISTRY.md',
-    'ACTIVE_WORKFLOW_RULES_REGISTRY.md',
-    'PROVIDER_PREFERENCE_REGISTRY.md',
-    'STORAGE_MODE_REGISTRY.md',
-    'PENDING_ONBOARDING_QUESTIONS_REGISTRY.md',
+    'project-initialization-registry.md',
+    'active-features-registry.md',
+    'active-workflow-rules-registry.md',
+    'provider-preference-registry.md',
+    'storage-mode-registry.md',
+    'pending-onboarding-questions-registry.md',
 ]
 missing = [name for name in required if not (pc/'registries'/name).exists()]
 if missing:

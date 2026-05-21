@@ -1,8 +1,8 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 from pathlib import Path
 import sys
 engine = Path(__file__).resolve().parents[1]
-default_root = engine/'templates/engine/project-control-template'
+default_root = engine/'templates/project-control'
 root = Path(sys.argv[1]) if len(sys.argv) > 1 else default_root
 required = [
  root/'registries/USER_STORY_REGISTRY.md',

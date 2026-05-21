@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 from pathlib import Path
 import sys
 
@@ -10,13 +10,13 @@ REQUIRED = [
     "APPFORGE_PROJECT_STATUS.md",
     "DECISION_LOG.md",
     "PENDING_QUESTIONS.md",
-    "docs/getting-started/start-here/STAGE_WORKFLOW.md",
-    "docs/getting-started/start-here/ENGINE_VS_APP_WORKSPACE_BOUNDARIES.md",
-    "registries/REPO_REGISTRY.md",
-    "registries/FEATURE_REGISTRY.md",
-    "registries/API_REGISTRY.md",
-    "registries/DESIGN_BASELINE_REGISTRY.md",
-    "templates/packets/artifact-packets/FIGMA_BASELINE_PACKET_TEMPLATE.md",
+    "docs/project-onboarding/start-here/stage-workflow.md",
+    "docs/project-onboarding/start-here/engine-vs-app-workspace-boundaries.md",
+    "registries/project-control/repo-registry.md",
+    "registries/project-control/feature-registry.md",
+    "registries/project-control/api-registry.md",
+    "registries/project-control/design-baseline-registry.md",
+    "templates/execution-packets/artifact-packets/figma-baseline-packet-template.md",
 ]
 
 missing = [p for p in REQUIRED if not (ROOT / p).exists()]

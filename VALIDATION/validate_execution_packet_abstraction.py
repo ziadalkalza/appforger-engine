@@ -2,9 +2,9 @@ from pathlib import Path
 import sys
 root = Path(__file__).resolve().parents[1]
 files = [
-    root/'templates/packets/execution-packets/EXECUTION_PACKET_TEMPLATE.md',
-    root/'templates/packets/execution-packets/CODE_AGENT_EXECUTION_PACKET.md',
-    root/'templates/packets/code-agent-packets/GENERIC_CODE_AGENT_PACKET_TEMPLATE.md',
+    root/'templates/execution-packets/generic/execution-packet-template.md',
+    root/'templates/execution-packets/generic/code-agent-execution-packet.md',
+    root/'templates/execution-packets/code-agent-packets/generic-code-agent-packet-template.md',
 ]
 for f in files:
     text = f.read_text(encoding='utf-8') if f.exists() else ''

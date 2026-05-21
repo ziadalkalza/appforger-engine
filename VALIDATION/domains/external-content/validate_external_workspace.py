@@ -10,11 +10,11 @@ from pathlib import Path
 
 REQUIRED_PROJECT_CONTROL_FILES = [
     "APPFORGE_PROJECT_STATUS.md", "PRODUCT_OVERVIEW.md", "DECISION_LOG.md", "ASSUMPTION_LOG.md", "PENDING_QUESTIONS.md", "APPFORGE_PROJECT.yaml",
-    "registries/REPO_REGISTRY.md", "registries/FEATURE_REGISTRY.md", "registries/SCREEN_REGISTRY.md",
-    "registries/API_REGISTRY.md", "registries/DATA_MODEL_REGISTRY.md", "registries/CHANGE_REQUEST_REGISTRY.md",
+    "registries/project-control/repo-registry.md", "registries/project-control/feature-registry.md", "registries/project-control/screen-registry.md",
+    "registries/project-control/api-registry.md", "registries/project-control/data-model-registry.md", "registries/project-control/change-request-registry.md",
     "registries/GENERATED_ARTIFACT_REGISTRY.md", "registries/EXTERNAL_DEPENDENCY_REGISTRY.md",
-    "workflows/operations/artifact-imports/IMPORT_INBOX.md", "registries/baselines/DESIGN_BASELINE_REGISTRY.md", "registries/baselines/API_BASELINE_REGISTRY.md",
-    "templates/packets/code-agent-packets/README.md", "registries/decision-snapshots/STAGE_SUMMARY.md", "CONTEXT_PACKS/README.md",
+    "workflows/artifact-lifecycle/artifact-imports/import-inbox.md", "registries/project-control/baselines/design-baseline-registry.md", "registries/project-control/baselines/api-baseline-registry.md",
+    "templates/execution-packets/code-agent-packets/README.md", "registries/decision-snapshots/STAGE_SUMMARY.md", "CONTEXT_PACKS/README.md",
 ]
 
 ROOT_FOLDERS = ["project-control", "design-assets", "exports", "local-only"]

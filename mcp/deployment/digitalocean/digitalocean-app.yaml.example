@@ -1,0 +1,16 @@
+name: appforger-mcp
+services:
+  - name: appforger-mcp
+    dockerfile_path: appforger-engine/mcp/deployment/docker/Dockerfile
+    source_dir: /
+    http_port: 8080
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    envs:
+      - key: APPFORGER_MCP_EXECUTION_MODE
+        value: guide_only
+      - key: APPFORGER_MCP_ALLOW_PROJECT_EXECUTION
+        value: "false"
+      - key: APPFORGER_MCP_API_KEY
+        type: SECRET
+        value: replace-in-digitalocean

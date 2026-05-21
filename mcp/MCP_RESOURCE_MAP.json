@@ -1,151 +1,151 @@
-﻿{
+{
   "version": 1,
   "exposure_mode": "manifest_selected",
   "resources": [
     {
       "id": "feature-manifest",
-      "uri": "appforge://feature-manifest",
+      "uri": "appforger://feature-manifest",
       "path": "registries/APPFORGE_FEATURE_MANIFEST.json",
       "mime_type": "application/json"
     },
     {
       "id": "start-here-for-agents",
-      "uri": "appforge://start-here/agents",
-      "path": "docs/getting-started/start-here/START_HERE_FOR_AGENTS.md",
+      "uri": "appforger://start-here/agents",
+      "path": "docs/project-onboarding/start-here/start-here-for-agents.md",
       "mime_type": "text/markdown"
     },
     {
       "id": "setup-guide",
-      "uri": "appforge://start-here/setup",
-      "path": "docs/getting-started/start-here/SETUP_AND_FIRST_RUN_GUIDE.md",
+      "uri": "appforger://start-here/setup",
+      "path": "docs/project-onboarding/start-here/setup-and-first-run-guide.md",
       "mime_type": "text/markdown",
       "optional": true
     },
     {
       "id": "source-pipeline-skill",
-      "uri": "appforge://skills/source_pipeline/run_source_pipeline",
-      "path": "skills/operations/source_pipeline_skills/run_source_pipeline/SKILL.md",
+      "uri": "appforger://skills/source_pipeline/run_source_pipeline",
+      "path": "skills/source-pipeline/run-source-pipeline/SKILL.md",
       "mime_type": "text/markdown"
     },
     {
       "id": "code-bootstrap-skill",
-      "uri": "appforge://skills/code_context/bootstrap_code_context",
-      "path": "skills/context/code-context/bootstrap_code_context/SKILL.md",
+      "uri": "appforger://skills/code_context/bootstrap_code_context",
+      "path": "skills/context-backend/code-context/bootstrap-code-context/SKILL.md",
       "mime_type": "text/markdown"
     },
     {
       "id": "confluence-fetch-skill",
-      "uri": "appforge://skills/doc_source/fetch_confluence_source",
-      "path": "skills/integrations/apps/confluence/fetch_source/SKILL.md",
+      "uri": "appforger://skills/doc_source/fetch_confluence_source",
+      "path": "skills/source-pipeline/confluence/fetch-source/SKILL.md",
       "mime_type": "text/markdown"
     },
     {
       "id": "cleanup-skill",
-      "uri": "appforge://skills/cleanup/clean_appforge_from_project",
-      "path": "skills/operations/cleanup_skills/clean_appforge_from_project/SKILL.md",
+      "uri": "appforger://skills/cleanup/clean_appforge_from_project",
+      "path": "skills/cleanup-lifecycle/clean-appforge-from-project/SKILL.md",
       "mime_type": "text/markdown"
     },
     {
       "id": "runtime-skill",
-      "uri": "appforge://skills/runtime/setup_runtime_storage",
-      "path": "skills/runtime/runtime_skills/setup_runtime_storage/SKILL.md",
+      "uri": "appforger://skills/runtime/setup_runtime_storage",
+      "path": "skills/runtime-storage/setup-runtime-storage/SKILL.md",
       "mime_type": "text/markdown"
     },
     {
       "id": "project-adoption-skill",
-      "uri": "appforge://skills/project_adoption/create_adoption_plan",
-      "path": "skills/onboarding/project_adoption_skills/create_adoption_plan/SKILL.md",
+      "uri": "appforger://skills/project_adoption/create_adoption_plan",
+      "path": "skills/project-onboarding/create-adoption-plan/SKILL.md",
       "mime_type": "text/markdown"
     },
     {
       "id": "code-source-registry-template",
-      "uri": "appforge://templates/project-control/code-source-registry",
-      "path": "templates/engine/project-control-template/code_sources/code-source-registry.yaml",
+      "uri": "appforger://templates/project-control/code-source-registry",
+      "path": "templates/project-control/code-sources/code-source-registry.yaml",
       "mime_type": "text/yaml"
     },
     {
       "id": "runtime-selection-template",
-      "uri": "appforge://templates/project-control/runtime-selection",
-      "path": "templates/engine/project-control-template/runtime/runtime-selection.yaml",
+      "uri": "appforger://templates/project-control/runtime-selection",
+      "path": "templates/project-control/runtime/runtime-selection.yaml",
       "mime_type": "text/yaml",
       "optional": true
     },
     {
       "id": "local-env-template",
-      "uri": "appforge://templates/local-env-example",
-      "path": "templates/engine/workspace-template/local-only/.env.local.example",
+      "uri": "appforger://templates/local-env-example",
+      "path": "templates/workspace/local-only/.env.local.example",
       "mime_type": "text/plain"
     },
     {
       "id": "setup-command",
-      "uri": "appforge://commands/setup_project",
+      "uri": "appforger://commands/setup_project",
       "path": "workflows/operations/new-app-initializer/setup_appforge_project.py",
       "mime_type": "text/x-python"
     },
     {
       "id": "source-pipeline-command",
-      "uri": "appforge://commands/source_pipeline",
-      "path": "templates/engine/project-control-template/pipelines/scripts/run_source_pipeline.py",
+      "uri": "appforger://commands/source_pipeline",
+      "path": "templates/project-control/pipelines/scripts/run_source_pipeline.py",
       "mime_type": "text/x-python"
     },
     {
       "id": "cleanup-command",
-      "uri": "appforge://commands/cleanup",
+      "uri": "appforger://commands/cleanup",
       "path": "workflows/operations/workspace-artifact-lifecycle/scripts/appforge_clean.py",
       "mime_type": "text/x-python"
     },
     {
       "id": "adoption-command",
-      "uri": "appforge://commands/adoption",
+      "uri": "appforger://commands/adoption",
       "path": "workflows/operations/project-adoption-git-boundaries/scripts/appforge_adopt.py",
       "mime_type": "text/x-python"
     },
     {
       "id": "integration-strategy-policy",
-      "uri": "appforge://policy/integration-strategy",
-      "path": "workflows/strategy/integration-strategy-advisor/INTEGRATION_STRATEGY_POLICY.md",
+      "uri": "appforger://policy/integration-strategy",
+      "path": "workflows/integration-strategy/integration-strategy-advisor/integration-strategy-policy.md",
       "mime_type": "text/markdown"
     },
     {
       "id": "integration-strategy-skill",
-      "uri": "appforge://skills/integration_strategy/choose_integration_approach",
-      "path": "skills/integrations/generic/strategy/choose_integration_approach/SKILL.md",
+      "uri": "appforger://skills/integration_strategy/choose_integration_approach",
+      "path": "skills/integration-strategy/strategy/choose-integration-approach/SKILL.md",
       "mime_type": "text/markdown"
     },
     {
       "id": "connector-research-skill",
-      "uri": "appforge://skills/integration_strategy/research_official_connectors",
-      "path": "skills/integrations/generic/strategy/research_official_connectors/SKILL.md",
+      "uri": "appforger://skills/integration_strategy/research_official_connectors",
+      "path": "skills/integration-strategy/strategy/research-official-connectors/SKILL.md",
       "mime_type": "text/markdown"
     },
     {
       "id": "connector-catalog-template",
-      "uri": "appforge://templates/project-control/integrations/connector-catalog",
-      "path": "templates/engine/project-control-template/integrations/connector-catalog.yaml",
+      "uri": "appforger://templates/project-control/integrations/connector-catalog",
+      "path": "templates/project-control/integrations/connector-catalog.yaml",
       "mime_type": "text/yaml"
     },
     {
       "id": "integration-decision-packet-template",
-      "uri": "appforge://templates/project-control/integrations/integration-decision-packet",
-      "path": "templates/engine/project-control-template/integrations/integration-decision-packet.template.md",
+      "uri": "appforger://templates/project-control/integrations/integration-decision-packet",
+      "path": "templates/project-control/integrations/integration-decision-packet.template.md",
       "mime_type": "text/markdown"
     },
     {
       "id": "mcp-feature-requests",
-      "uri": "appforge://mcp/feature-requests",
-      "path": "mcp/FEATURE_REQUESTS_AND_ISSUES.md",
+      "uri": "appforger://mcp/feature-requests",
+      "path": "mcp/docs/feature-requests-and-issues.md",
       "mime_type": "text/markdown"
     },
     {
       "id": "mcp-feature-request-skill",
-      "uri": "appforge://skills/mcp/request_feature_issue",
-      "path": "skills/integrations/generic/mcp-server/request_mcp_feature_issue/SKILL.md",
+      "uri": "appforger://skills/mcp/request_feature_issue",
+      "path": "skills/integration-strategy/mcp-server/request-mcp-feature-issue/SKILL.md",
       "mime_type": "text/markdown"
     },
     {
       "id": "mcp-feature-request-prompt",
-      "uri": "appforge://prompts/request_mcp_feature_issue",
-      "path": "mcp/interface/prompts/request_mcp_feature_issue.md",
+      "uri": "appforger://prompts/request_mcp_feature_issue",
+      "path": "templates/integration-strategy/mcp-prompts/request-mcp-feature-issue.md",
       "mime_type": "text/markdown"
     }
   ]

@@ -1,11 +1,11 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 from pathlib import Path
 import sys
 root = Path(__file__).resolve().parents[1]
 texts = [
-    root/'policies/operations/parallel-agent-work/PARALLEL_WORK_POLICY.md',
-    root/'policies/operations/parallel-agent-work/SAFE_PARALLELISM_MATRIX.md',
-    root/'policies/operations/parallel-agent-work/MID_JOB_CONFLICT_FIX_POLICY.md',
+    root/'policies/governance/parallel-agent-work/parallel-work-policy.md',
+    root/'policies/release-delivery/parallel-agent-work/safe-parallelism-matrix.md',
+    root/'policies/provider-adapters/parallel-agent-work/mid-job-conflict-fix-policy.md',
 ]
 required_terms = ['parallel work plan', 'conflict', 'baseline']
 errors=[]

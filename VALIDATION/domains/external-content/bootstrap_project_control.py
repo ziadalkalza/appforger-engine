@@ -81,7 +81,7 @@ def main():
       figma_file: ''
       approved_baseline: ''
     workspace:
-      appforge_engine: ../appforge-engine
+      appforge_engine: ../appforger-engine
       project_control: .
       backend: ../backend
       ios: ../ios

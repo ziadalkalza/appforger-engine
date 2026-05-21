@@ -1,19 +1,19 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 from pathlib import Path
 import sys, subprocess
 ROOT = Path(__file__).resolve().parents[1]
 required = [
-    'validation/audits/operational-audit/REPORTS/FINAL_APPFORGE_V1_REVIEW_REPORT.md',
-    'workflows/product/project-onboarding/INITIALIZATION_GATE_POLICY.md',
-    'policies/providers/provider-layer/PROVIDER_AGNOSTIC_POLICY.md',
-    'policies/operations/parallel-agent-work/PARALLEL_WORK_POLICY.md',
-    'runtime/collaboration/team-operations-backend/TEAM_OPERATIONS_BACKEND_POLICY.md',
-    'docs/document-management/project-docs-library/PROJECT_DOCS_LIBRARY_POLICY.md',
-    'runtime/context/context-backend/SOURCE_OF_TRUTH_POLICY.md',
-    'templates/engine/workspace-template/docs/README.md',
-    'templates/engine/project-control-template/APPFORGE_PROJECT_PROFILE.md',
-    'workflows/operations/context-sync-retrieval/code_context_sources/README.md',
-    'templates/engine/workspace-template/local-only/.env.local.example',
+    'validation/operational-audits/operational-audit/reports/final-appforge-v1-review-report.md',
+    'workflows/project-onboarding/initialization-gate-policy.md',
+    'ai-models/chatgpt/policies/provider-agnostic-policy.md',
+    'policies/governance/parallel-agent-work/parallel-work-policy.md',
+    'runtime/collaboration/team-operations-backend/team-operations-backend-policy.md',
+    'docs/project-docs-library/project-docs-library-policy.md',
+    'runtime/context-backend/source-of-truth-policy.md',
+    'templates/workspace/docs/README.md',
+    'templates/project-control/appforge-project-profile.md',
+    'workflows/operations/context-sync-retrieval/code-context-sources/README.md',
+    'templates/workspace/local-only/.env.local.example',
 ]
 missing = [p for p in required if not (ROOT / p).exists()]
 if missing:

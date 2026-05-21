@@ -1,0 +1,24 @@
+name: Appforger Context Reindex
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'project-control/**'
+
+jobs:
+  reindex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install optional requirements
+        run: pip install -r project-control/context-backend/requirements.txt
+      - name: Reindex project-control
+        env:
+          QDRANT_URL: ${{ secrets.QDRANT_URL }}
+          QDRANT_API_KEY: ${{ secrets.QDRANT_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python project-control/context-backend/scripts/index_project_control.py --project-control project-control

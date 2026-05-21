@@ -1,15 +1,15 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 from pathlib import Path
 import sys
 root=Path(__file__).resolve().parents[1]
 required=[
- root/'validation/audits/operational-audit/README.md',
- root/'validation/audits/operational-audit/OPERATIONAL_AUDIT_POLICY.md',
- root/'validation/audits/operational-audit/ENGINE_STRUCTURE_AUDIT.md',
- root/'validation/audits/operational-audit/SOURCE_OF_TRUTH_AUDIT.md',
- root/'validation/audits/operational-audit/WORKFLOW_COMPATIBILITY_AUDIT.md',
- root/'validation/audits/operational-audit/AUTOMATION_SAFETY_AUDIT.md',
- root/'validation/audits/operational-audit/END_TO_END_SCENARIO_TESTS.md',
+ root/'validation/operational-audits/operational-audit/README.md',
+ root/'validation/operational-audits/operational-audit/operational-audit-policy.md',
+ root/'validation/operational-audits/operational-audit/engine-structure-audit.md',
+ root/'validation/operational-audits/operational-audit/source-of-truth-audit.md',
+ root/'validation/operational-audits/operational-audit/workflow-compatibility-audit.md',
+ root/'validation/operational-audits/operational-audit/automation-safety-audit.md',
+ root/'validation/operational-audits/operational-audit/end-to-end-scenario-tests.md',
 ]
 missing=[str(p.relative_to(root)) for p in required if not p.exists()]
 if missing:

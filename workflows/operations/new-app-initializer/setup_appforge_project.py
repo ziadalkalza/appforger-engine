@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 import argparse, shutil, os, subprocess, sys
 from pathlib import Path
 
@@ -38,9 +38,9 @@ def main():
     args=ap.parse_args()
     target=Path(args.target).resolve()
     engine=Path(__file__).resolve().parents[3]
-    tmpl=engine/"templates/engine"
-    copytree_merge(tmpl/"project-control-template", target/"project-control")
-    copytree_merge(tmpl/"workspace-template", target)
+    tmpl=engine/"templates"
+    copytree_merge(tmpl/"project-control", target/"project-control")
+    copytree_merge(tmpl/"workspace", target)
     for d in ["docs","design-assets","exports","local-only"]:
         (target/d).mkdir(exist_ok=True)
     env_ex=target/"local-only/.env.local.example"

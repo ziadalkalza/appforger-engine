@@ -2,16 +2,18 @@
 from pathlib import Path
 import re, sys
 root = Path(__file__).resolve().parents[1]
-allowed_root_files = {'.gitignore', 'README.md', 'desktop.ini'}
+allowed_root_files = {'.gitignore', 'README.md', 'STRUCTURE_NOTES.md', 'desktop.ini'}
 allowed_root_dirs = {
     '.git',
+    'ai-models',
     'docs',
+    'examples',
     'integrations',
     'mcp',
     'policies',
     'registries',
     'runtime',
-    'scripts',
+    'tools',
     'skills',
     'templates',
     'validation',

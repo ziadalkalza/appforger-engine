@@ -1,7 +1,7 @@
-﻿from pathlib import Path
+from pathlib import Path
 import sys
 root = Path(__file__).resolve().parents[1]
-layer = root/'appforge-engine'/'runtime/collaboration/team-operations-backend'
+layer = root/'appforger-engine'/'runtime/collaboration/team-operations-backend'
 text='\n'.join(p.read_text(encoding='utf-8', errors='ignore') for p in layer.rglob('*.md')).lower()
 checks = {
     'secret values boundary': 'must never store secret values' in text,

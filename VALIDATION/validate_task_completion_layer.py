@@ -1,17 +1,17 @@
-﻿from pathlib import Path
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 required = [
     'workflows/operations/task-completion-evidence/README.md',
-    'workflows/operations/task-completion-evidence/TASK_COMPLETION_POLICY.md',
-    'workflows/operations/task-completion-evidence/TASK_STATUS_MODEL.md',
-    'workflows/operations/task-completion-evidence/CHECKPOINT_COMMIT_POLICY.md',
-    'workflows/operations/task-completion-evidence/COMPLETION_COMMIT_POLICY.md',
-    'workflows/operations/task-completion-evidence/DONE_REPORT_REQUIREMENTS.md',
-    'workflows/operations/task-completion-evidence/COMPLETION_EVIDENCE_MATRIX.md',
-    'workflows/operations/task-completion-evidence/TASK_CLOSEOUT_CHECKLIST.md',
-    'workflows/operations/task-completion-evidence/MANUAL_OVERRIDE_POLICY.md',
-    'skills/quality/qa_skills/close_task_with_evidence/SKILL.md',
+    'workflows/operations/task-completion-evidence/task-completion-policy.md',
+    'workflows/operations/task-completion-evidence/task-status-model.md',
+    'workflows/operations/task-completion-evidence/checkpoint-commit-policy.md',
+    'workflows/operations/task-completion-evidence/completion-commit-policy.md',
+    'workflows/experience-design/task-completion-evidence/done-report-requirements.md',
+    'workflows/experience-design/task-completion-evidence/completion-evidence-matrix.md',
+    'workflows/operations/task-completion-evidence/task-closeout-checklist.md',
+    'workflows/operations/task-completion-evidence/manual-override-policy.md',
+    'skills/quality-assurance/close-task-with-evidence/SKILL.md',
 ]
 missing = [p for p in required if not (ROOT / p).exists()]
 if missing:

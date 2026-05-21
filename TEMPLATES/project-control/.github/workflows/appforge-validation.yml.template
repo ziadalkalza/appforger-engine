@@ -1,0 +1,16 @@
+name: Appforger Validation
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'project-control/**'
+      - 'appforger-engine/**'
+
+jobs:
+  validate-appforge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Appforger automation layer validation
+        run: python appforger-engine/validation/validate_automation_layer.py

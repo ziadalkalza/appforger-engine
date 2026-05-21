@@ -1,24 +1,24 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Create an AppForger project workspace from engine templates.
 
 The distributed AppForger zip is engine-only. This initializer expands the
-engine templates into project-specific workspace folders outside appforge-engine.
+engine templates into project-specific workspace folders outside appforger-engine.
 
 Examples:
   # Web app with backend
-  python appforge-engine/workflows/operations/new-app-initializer/create_new_app.py \
+  python appforger-engine/workflows/operations/new-app-initializer/create_new_app.py \
     --name "My Web App" --target ./my-app-workspace --app-type web --backend supabase
 
   # Generic mobile / Flutter app
-  python appforge-engine/workflows/operations/new-app-initializer/create_new_app.py \
+  python appforger-engine/workflows/operations/new-app-initializer/create_new_app.py \
     --name "My Mobile App" --target ./my-app-workspace --app-type mobile --mobile-strategy generic --backend none
 
   # Native iOS + Android app with backend
-  python appforge-engine/workflows/operations/new-app-initializer/create_new_app.py \
+  python appforger-engine/workflows/operations/new-app-initializer/create_new_app.py \
     --name "My Native App" --target ./my-app-workspace --app-type mobile --mobile-strategy native_both --backend fastapi_postgres
 
   # Backend-only project
-  python appforge-engine/workflows/operations/new-app-initializer/create_new_app.py \
+  python appforger-engine/workflows/operations/new-app-initializer/create_new_app.py \
     --name "My API" --target ./my-api-workspace --app-type backend_only --backend fastapi_postgres
 """
 from __future__ import annotations
@@ -157,8 +157,8 @@ def main() -> None:
     target = Path(args.target).resolve()
     target.mkdir(parents=True, exist_ok=True)
 
-    templates = engine / "templates/engine"
-    copytree_contents(templates / "project-control-template", target / "project-control")
+    templates = engine / "templates"
+    copytree_contents(templates / "project-control", target / "project-control")
     add_common_workspace_dirs(target)
 
     impl_dirs = resolve_implementation_dirs(
@@ -206,7 +206,7 @@ def main() -> None:
     (target / "README.md").write_text(
         f"# {args.name} Workspace\n\n"
         f"Created from the AppForger v1 engine-only package.\n\n"
-        f"The reusable engine lives in `appforge-engine/`. Project-specific state lives in `project-control/`.\n\n"
+        f"The reusable engine lives in `appforger-engine/`. Project-specific state lives in `project-control/`.\n\n"
         f"Generated implementation folders: `{', '.join(sorted(impl_dirs)) or 'none'}`.\n\n"
         f"Shared folders: `docs/`, `design-assets/`, `exports/`, `local-only/`.\n",
         encoding="utf-8",

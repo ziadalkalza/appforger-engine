@@ -1,15 +1,15 @@
-﻿from pathlib import Path
+from pathlib import Path
 import sys
 root = Path(__file__).resolve().parents[1]
 required = [
-    'policies/providers/provider-layer/README.md',
-    'policies/providers/provider-layer/PROVIDER_AGNOSTIC_POLICY.md',
-    'policies/providers/provider-layer/CAPABILITY_ROUTING_MODEL.md',
-    'policies/providers/provider-layer/provider_profiles/providers/chatgpt/PROFILE.md',
-    'policies/providers/provider-layer/provider_profiles/providers/codex/PROFILE.md',
-    'policies/providers/provider-layer/provider_profiles/providers/claude/CODE_PROFILE.md',
-    'templates/packets/execution-packets/EXECUTION_PACKET_TEMPLATE.md',
-    'skills/providers/generic/select_provider_for_task/SKILL.md',
+    'ai-models/chatgpt/policies/README.md',
+    'ai-models/chatgpt/policies/provider-agnostic-policy.md',
+    'policies/experience-design/figma/capability-routing-model.md',
+    'ai-models/chatgpt/policies/profile/profile.md',
+    'ai-models/codex/policies/profile/profile.md',
+    'ai-models/claude/policies/profile/code-profile.md',
+    'templates/execution-packets/generic/execution-packet-template.md',
+    'skills/provider-adapters/select-provider-for-task/SKILL.md',
 ]
 missing = [p for p in required if not (root/p).exists()]
 if missing:

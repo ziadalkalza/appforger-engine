@@ -1,4 +1,4 @@
-﻿{
+{
   "manifest_version": 1,
   "note": "This manifest is the package truth-check list. validate_feature_manifest.py must fail if required files for any claimed feature are missing.",
   "features": [
@@ -6,8 +6,8 @@
       "id": "engine_only_package",
       "status": "implemented",
       "required_paths": [
-        "docs/getting-started/start-here/README.md",
-        "docs/getting-started/start-here/HOW_TO_USE_THIS_ENGINE.md",
+        "docs/project-onboarding/start-here/README.md",
+        "docs/project-onboarding/start-here/how-to-use-this-engine.md",
         "validation/validate_engine_only_package.py"
       ]
     },
@@ -16,9 +16,9 @@
       "status": "implemented_scaffold",
       "required_paths": [
         "workflows/operations/new-app-initializer/setup_appforge_project.py",
-        "docs/getting-started/start-here/START_HERE_FOR_AGENTS.md",
-        "docs/getting-started/start-here/PROJECT_INJECTION_QUICKSTART.md",
-        "templates/engine/workspace-template/local-only/.env.local.example"
+        "docs/project-onboarding/start-here/start-here-for-agents.md",
+        "docs/project-onboarding/start-here/project-injection-quickstart.md",
+        "templates/workspace/local-only/.env.local.example"
       ]
     },
     {
@@ -26,30 +26,30 @@
       "status": "implemented_scaffold",
       "required_paths": [
         "workflows/operations/new-app-initializer/setup_appforge_project.py",
-        "templates/engine/workspace-template/AGENTS.md.template",
-        "templates/engine/workspace-template/CLAUDE.md.template"
+        "templates/workspace/agents.md.template",
+        "templates/workspace/claude.md.template"
       ]
     },
     {
       "id": "runtime_infrastructure",
       "status": "implemented_scaffold",
       "required_paths": [
-        "runtime/platform/storage/README.md",
-        "templates/engine/project-control-template/runtime/scripts/appforge_runtime.py",
-        "templates/engine/project-control-template/runtime/docker/docker-compose.appforge-runtime.yml",
-        "templates/engine/project-control-template/runtime/runtime-selection.yaml"
+        "runtime/runtime-storage/storage/README.md",
+        "templates/project-control/runtime/scripts/appforge_runtime.py",
+        "templates/project-control/runtime/docker/docker-compose.appforge-runtime.yml",
+        "templates/project-control/runtime/runtime-selection.yaml"
       ]
     },
     {
       "id": "code_context_runtime",
       "status": "implemented_scaffold",
       "required_paths": [
-        "workflows/operations/context-sync-retrieval/code_context_sources/CODE_CONTEXT_SOURCE_POLICY.md",
-        "skills/context/code-context/bootstrap_code_context/SKILL.md",
-        "templates/engine/project-control-template/code_sources/scripts/bootstrap_code_context.py",
-        "templates/engine/project-control-template/code_sources/scripts/code_context_runtime.py",
-        "templates/engine/project-control-template/code_sources/scripts/scan_code_source.py",
-        "templates/engine/project-control-template/code_sources/scripts/sync_code_graph.py"
+        "workflows/operations/context-sync-retrieval/code-context-sources/code-context-source-policy.md",
+        "skills/context-backend/code-context/bootstrap-code-context/SKILL.md",
+        "templates/project-control/code-sources/scripts/bootstrap_code_context.py",
+        "templates/project-control/code-sources/scripts/code_context_runtime.py",
+        "templates/project-control/code-sources/scripts/scan_code_source.py",
+        "templates/project-control/code-sources/scripts/sync_code_graph.py"
       ]
     },
     {
@@ -58,9 +58,9 @@
       "required_paths": [
         "workflows/operations/project-adoption-git-boundaries/README.md",
         "workflows/operations/project-adoption-git-boundaries/scripts/appforge_adopt.py",
-        "skills/onboarding/project_adoption_skills/create_adoption_plan/SKILL.md",
-        "templates/engine/project-control-template/adoption/adoption-manifest.yaml",
-        "templates/engine/project-control-template/git_boundaries/shared-control-repo.yaml"
+        "skills/project-onboarding/create-adoption-plan/SKILL.md",
+        "templates/project-control/adoption/adoption-manifest.yaml",
+        "templates/project-control/git-boundaries/shared-control-repo.yaml"
       ]
     },
     {
@@ -68,124 +68,124 @@
       "status": "implemented_scaffold",
       "required_paths": [
         "workflows/operations/workspace-artifact-lifecycle/scripts/appforge_clean.py",
-        "docs/getting-started/start-here/CLEANUP_GUIDE.md",
-        "skills/operations/cleanup_skills/clean_appforge_from_project/SKILL.md"
+        "docs/project-onboarding/start-here/cleanup-guide.md",
+        "skills/cleanup-lifecycle/clean-appforge-from-project/SKILL.md"
       ]
     },
     {
       "id": "git_provider_integrations",
       "status": "implemented_scaffold",
       "required_paths": [
-        "integrations/source-control/generic/README.md",
+        "integrations/source-control/bitbucket/docs/README-2.md",
         "integrations/source-control/generic/python/git_providers/base_provider.py",
         "integrations/source-control/bitbucket/python/git_providers/bitbucket_provider.py",
         "integrations/source-control/github/python/git_providers/github_provider.py",
         "integrations/source-control/gitlab/python/git_providers/gitlab_provider.py",
         "integrations/source-control/generic/python/git_providers/url_normalizer.py",
-        "skills/integrations/generic/source-control/configure_git_provider/SKILL.md"
+        "skills/integration-strategy/source-control/configure-git-provider/SKILL.md"
       ]
     },
     {
       "id": "bitbucket_integration",
       "status": "implemented_scaffold",
       "required_paths": [
-        "integrations/source-control/bitbucket/BITBUCKET_INTEGRATION_POLICY.md",
+        "integrations/source-control/bitbucket/docs/bitbucket-integration-policy.md",
         "integrations/source-control/bitbucket/python/git_providers/bitbucket_provider.py",
-        "skills/integrations/apps/bitbucket/sync_code_source/SKILL.md"
+        "skills/source-control/bitbucket/sync-code-source/SKILL.md"
       ]
     },
     {
       "id": "confluence_fetch_integration",
       "status": "implemented_scaffold",
       "required_paths": [
-        "integrations/document-sources/confluence/README.md",
-        "integrations/document-sources/confluence/CONFLUENCE_FETCH_POLICY.md",
-        "integrations/document-sources/confluence/CONFLUENCE_FETCH_ONLY_BOUNDARY.md",
+        "integrations/document-sources/confluence/docs/README.md",
+        "integrations/document-sources/confluence/docs/confluence-fetch-policy.md",
+        "integrations/document-sources/confluence/docs/confluence-fetch-only-boundary.md",
         "integrations/document-sources/confluence/python/doc_source_integrations/confluence_provider.py",
         "integrations/document-sources/confluence/python/doc_source_integrations/confluence_normalizer.py",
-        "templates/engine/project-control-template/doc_sources/scripts/fetch_confluence.py",
-        "skills/integrations/apps/confluence/fetch_source/SKILL.md"
+        "templates/project-control/doc-sources/scripts/fetch_confluence.py",
+        "skills/source-pipeline/confluence/fetch-source/SKILL.md"
       ]
     },
     {
       "id": "source_pipeline_orchestrator",
       "status": "implemented_scaffold",
       "required_paths": [
-        "workflows/operations/source-pipelines/README.md",
-        "templates/engine/project-control-template/pipelines/scripts/run_source_pipeline.py",
-        "skills/operations/source_pipeline_skills/run_source_pipeline/SKILL.md"
+        "workflows/source-pipeline/source-pipelines/README.md",
+        "templates/project-control/pipelines/scripts/run_source_pipeline.py",
+        "skills/source-pipeline/run-source-pipeline/SKILL.md"
       ]
     },
     {
       "id": "skill_layer_for_new_operational_features",
       "status": "implemented",
       "required_paths": [
-        "skills/runtime/runtime_skills/setup_runtime_storage/SKILL.md",
-        "skills/context/code-context/bootstrap_code_context/SKILL.md",
-        "skills/integrations/apps/confluence/fetch_source/SKILL.md",
-        "skills/integrations/generic/source-control/configure_git_provider/SKILL.md",
-        "skills/operations/source_pipeline_skills/run_source_pipeline/SKILL.md",
-        "skills/onboarding/project_adoption_skills/create_adoption_plan/SKILL.md",
-        "skills/operations/cleanup_skills/clean_appforge_from_project/SKILL.md"
+        "skills/runtime-storage/setup-runtime-storage/SKILL.md",
+        "skills/context-backend/code-context/bootstrap-code-context/SKILL.md",
+        "skills/source-pipeline/confluence/fetch-source/SKILL.md",
+        "skills/integration-strategy/source-control/configure-git-provider/SKILL.md",
+        "skills/source-pipeline/run-source-pipeline/SKILL.md",
+        "skills/project-onboarding/create-adoption-plan/SKILL.md",
+        "skills/cleanup-lifecycle/clean-appforge-from-project/SKILL.md"
       ]
     },
     {
       "id": "single_env_local_private_config",
       "status": "implemented",
       "required_paths": [
-        "templates/engine/workspace-template/local-only/.env.local.example",
-        "policies/collaboration/team-secrets-access/SECRET_ACCESS_POLICY.md"
+        "templates/workspace/local-only/.env.local.example",
+        "policies/collaboration/team-secrets-access/secret-access-policy.md"
       ]
     },
     {
       "id": "cloud_runtime_storage_setup",
       "status": "implemented_scaffold",
       "required_paths": [
-        "runtime/platform/storage/generic/cloud/CLOUD_RUNTIME_POLICY.md",
-        "runtime/platform/storage/apps/qdrant/CLOUD_SETUP.md",
-        "runtime/platform/storage/apps/neo4j/AURA_SETUP.md",
-        "runtime/platform/storage/apps/postgres/MANAGED_POSTGRES_SETUP.md",
-        "runtime/platform/storage/apps/supabase/RUNTIME_SETUP.md",
-        "skills/runtime/runtime_skills/setup_cloud_runtime/SKILL.md",
-        "skills/runtime/runtime_skills/migrate_local_to_cloud_runtime/SKILL.md",
-        "templates/engine/project-control-template/runtime/cloud/cloud-runtime-selection.yaml",
-        "templates/engine/project-control-template/runtime/scripts/appforge_runtime.py"
+        "runtime/runtime-storage/storage/generic/cloud/cloud-runtime-policy.md",
+        "runtime/context-backend/qdrant/cloud-setup.md",
+        "runtime/context-backend/neo4j/aura-setup.md",
+        "runtime/databases/postgres/managed-postgres-setup.md",
+        "runtime/backend-platforms/supabase/runtime-setup.md",
+        "skills/runtime-storage/setup-cloud-runtime/SKILL.md",
+        "skills/runtime-storage/migrate-local-to-cloud-runtime/SKILL.md",
+        "templates/project-control/runtime/cloud/cloud-runtime-selection.yaml",
+        "templates/project-control/runtime/scripts/appforge_runtime.py"
       ]
     },
     {
       "id": "appforger_mcp_server",
       "status": "implemented_scaffold",
-      "description": "Guide-first AppForger MCP server exposing manifest-selected engine resources, workflow prompts, read/plan/search tools, command references, risk metadata, Docker/DigitalOcean deployment examples, and client examples. Remote hosted mode never executes project actions.",
+      "description": "Guide-first Appforger MCP server exposing manifest-selected engine resources, workflow prompts, read/plan/search tools, command references, risk metadata, Docker/DigitalOcean deployment examples, and client examples. Remote hosted mode never executes project actions.",
       "required_paths": [
-        "mcp/README.md",
-        "mcp/INSTALL_AND_USE.md",
-        "mcp/REMOTE_HOSTING_GUIDE.md",
-        "mcp/SECURITY_AND_APPROVAL_POLICY.md",
+        "mcp/docs/README.md",
+        "mcp/docs/install-and-use.md",
+        "mcp/docs/remote-hosting-guide.md",
+        "mcp/docs/security-and-approval-policy.md",
         "mcp/MCP_RESOURCE_MAP.json",
-        "mcp/MCP_PROMPT_CATALOG.md",
-        "mcp/MCP_TOOL_CATALOG.md",
-        "mcp/interface/server/appforge_mcp_server.py",
-        "mcp/interface/server/auth.py",
-        "mcp/interface/server/appforge_resource_provider.py",
-        "mcp/interface/server/appforge_prompt_provider.py",
-        "mcp/interface/server/appforge_tool_provider.py",
-        "mcp/interface/server/appforge_risk_classifier.py",
-        "mcp/interface/server/manifest_loader.py",
-        "mcp/hosting/deployment/docker/Dockerfile",
-        "mcp/hosting/deployment/docker/docker-compose.mcp.yml",
-        "mcp/hosting/deployment/digitalocean/digitalocean-app.yaml.example",
-        "mcp/hosting/deployment/digitalocean/DIGITALOCEAN_DEPLOYMENT_GUIDE.md",
-        "mcp/hosting/deployment/env/mcp.env.example",
-        "mcp/clients/examples/claude_desktop_config.json",
-        "mcp/clients/examples/cursor_config_example.json",
-        "mcp/clients/examples/vscode_mcp_example.json",
-        "mcp/clients/examples/chatgpt_connector_notes.md",
-        "mcp/clients/examples/gemini_cli_mcp_config.json",
-        "mcp/clients/examples/generic_stdio_example.md",
-        "mcp/clients/examples/generic_streamable_http_example.md",
-        "skills/integrations/generic/mcp-server/use_appforger_mcp/SKILL.md",
-        "skills/integrations/generic/mcp-server/host_remote_mcp/SKILL.md",
-        "skills/integrations/generic/mcp-server/create_mcp_action_plan/SKILL.md",
+        "mcp/docs/mcp-prompt-catalog.md",
+        "mcp/docs/mcp-tool-catalog.md",
+        "mcp/server/appforge_mcp_server.py",
+        "mcp/server/auth.py",
+        "mcp/server/appforge_resource_provider.py",
+        "mcp/server/appforge_prompt_provider.py",
+        "mcp/server/appforge_tool_provider.py",
+        "mcp/server/appforge_risk_classifier.py",
+        "mcp/server/manifest_loader.py",
+        "mcp/deployment/docker/Dockerfile",
+        "mcp/deployment/docker/docker-compose.mcp.yml",
+        "mcp/deployment/digitalocean/digitalocean-app.yaml.example",
+        "mcp/deployment/digitalocean/docs/digitalocean-deployment-guide.md",
+        "mcp/deployment/env/mcp.env.example",
+        "mcp/clients/examples/claude-desktop-config.json",
+        "mcp/clients/examples/cursor-config-example.json",
+        "mcp/clients/examples/vscode-mcp-example.json",
+        "mcp/clients/examples/chatgpt-connector-notes.md",
+        "mcp/clients/examples/gemini-cli-mcp-config.json",
+        "mcp/clients/examples/generic-stdio-example.md",
+        "mcp/clients/examples/generic-streamable-http-example.md",
+        "skills/integration-strategy/mcp-server/use-appforger-mcp/SKILL.md",
+        "skills/integration-strategy/mcp-server/host-remote-mcp/SKILL.md",
+        "skills/integration-strategy/mcp-server/create-mcp-action-plan/SKILL.md",
         "validation/validate_appforger_mcp_server.py"
       ]
     },
@@ -193,28 +193,28 @@
       "id": "operator_how_to_documentation",
       "status": "implemented",
       "required_paths": [
-        "docs/getting-started/operator-guides/README.md",
-        "docs/getting-started/operator-guides/SETUP_AND_FIRST_RUN.md",
-        "docs/getting-started/operator-guides/FEATURES_AND_ACTIVITIES.md",
-        "docs/getting-started/operator-guides/ACTIVITY_INDEX.md",
-        "docs/getting-started/operator-guides/COMMANDS_CHEATSHEET.md",
-        "docs/getting-started/operator-guides/TROUBLESHOOTING_AND_VALIDATION.md",
-        "docs/getting-started/operator-guides/FEATURE_GUIDES/REPO_IMPORT_AND_CODE_CONTEXT_SYNC.md",
-        "docs/getting-started/operator-guides/FEATURE_GUIDES/MCP_SERVER.md"
+        "docs/project-onboarding/operator-guides/README.md",
+        "docs/project-onboarding/operator-guides/setup-and-first-run.md",
+        "docs/project-onboarding/operator-guides/features-and-activities.md",
+        "docs/project-onboarding/operator-guides/activity-index.md",
+        "docs/project-onboarding/operator-guides/commands-cheatsheet.md",
+        "docs/project-onboarding/operator-guides/troubleshooting-and-validation.md",
+        "docs/context-backend/feature-guides/repo-import-and-code-context-sync.md",
+        "mcp/docs/feature-guides/mcp-server.md"
       ]
     },
     {
       "id": "integration_strategy_advisor",
       "status": "implemented_scaffold",
       "required_paths": [
-        "workflows/strategy/integration-strategy-advisor/README.md",
-        "workflows/strategy/integration-strategy-advisor/INTEGRATION_STRATEGY_POLICY.md",
-        "workflows/strategy/integration-strategy-advisor/CONNECTOR_FIRST_POLICY.md",
-        "skills/integrations/generic/strategy/choose_integration_approach/SKILL.md",
-        "skills/integrations/generic/strategy/research_official_connectors/SKILL.md",
-        "templates/engine/project-control-template/integrations/integration-strategy-registry.yaml",
-        "templates/engine/project-control-template/integrations/integration-decision-packet.template.md",
-        "docs/getting-started/operator-guides/FEATURE_GUIDES/INTEGRATION_STRATEGY_ADVISOR.md",
+        "workflows/integration-strategy/integration-strategy-advisor/README.md",
+        "workflows/integration-strategy/integration-strategy-advisor/integration-strategy-policy.md",
+        "workflows/integration-strategy/integration-strategy-advisor/connector-first-policy.md",
+        "skills/integration-strategy/strategy/choose-integration-approach/SKILL.md",
+        "skills/integration-strategy/strategy/research-official-connectors/SKILL.md",
+        "templates/project-control/integrations/integration-strategy-registry.yaml",
+        "templates/project-control/integrations/integration-decision-packet.template.md",
+        "mcp/docs/feature-guides/integration-strategy-advisor.md",
         "validation/validate_integration_strategy_advisor.py"
       ]
     },
@@ -222,10 +222,10 @@
       "id": "mcp_feature_request_issue_policy",
       "status": "implemented",
       "required_paths": [
-        "mcp/FEATURE_REQUESTS_AND_ISSUES.md",
-        "skills/integrations/generic/mcp-server/request_mcp_feature_issue/SKILL.md",
-        "mcp/interface/prompts/request_mcp_feature_issue.md",
-        "docs/getting-started/operator-guides/FEATURE_GUIDES/APPFORGE_MCP_SERVER.md"
+        "mcp/docs/feature-requests-and-issues.md",
+        "skills/integration-strategy/mcp-server/request-mcp-feature-issue/SKILL.md",
+        "templates/integration-strategy/mcp-prompts/request-mcp-feature-issue.md",
+        "mcp/docs/feature-guides/appforge-mcp-server.md"
       ]
     }
   ]

@@ -53,14 +53,14 @@ def main():
     if args.mode=="remove-local":
         rm(target/"local-only", args.yes)
     elif args.mode=="remove-engine":
-        for rel in ["project-control","appforge-engine"]:
+        for rel in ["project-control","appforger-engine"]:
             rm(target/rel,args.yes)
         remove_generated_adapters(target,args.yes)
     elif args.mode=="remove-project-keep-engine":
         if not args.project_name_confirmation:
             raise SystemExit("project-name confirmation required")
         for p in target.iterdir():
-            if p.name!="appforge-engine":
+            if p.name!="appforger-engine":
                 rm(p,args.yes)
     elif args.mode=="remove-runtime-containers":
         print("Use docker compose down via project-control/runtime/scripts/appforge_runtime.py down")

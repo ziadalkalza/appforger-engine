@@ -1,19 +1,19 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 from pathlib import Path
 import json, subprocess, sys, tempfile
 root = Path(__file__).resolve().parents[1]
 base = root / 'mcp'
 required = [
- 'README.md','INSTALL_AND_USE.md','REMOTE_HOSTING_GUIDE.md','SECURITY_AND_APPROVAL_POLICY.md',
- 'MCP_RESOURCE_MAP.json','MCP_PROMPT_CATALOG.md','MCP_TOOL_CATALOG.md',
- 'interface/server/appforge_mcp_server.py','interface/server/auth.py','interface/server/appforge_resource_provider.py','interface/server/appforge_prompt_provider.py',
- 'interface/server/appforge_tool_provider.py','interface/server/appforge_risk_classifier.py','interface/server/manifest_loader.py',
- 'hosting/deployment/docker/Dockerfile','hosting/deployment/docker/docker-compose.mcp.yml',
- 'hosting/deployment/digitalocean/digitalocean-app.yaml.example','hosting/deployment/digitalocean/DIGITALOCEAN_DEPLOYMENT_GUIDE.md',
- 'hosting/deployment/env/mcp.env.example',
- 'clients/examples/claude_desktop_config.json','clients/examples/cursor_config_example.json','clients/examples/vscode_mcp_example.json',
- 'clients/examples/chatgpt_connector_notes.md','clients/examples/gemini_cli_mcp_config.json','clients/examples/generic_stdio_example.md',
- 'clients/examples/generic_streamable_http_example.md'
+ 'docs/README.md','docs/install-and-use.md','docs/remote-hosting-guide.md','docs/security-and-approval-policy.md',
+ 'MCP_RESOURCE_MAP.json','docs/mcp-prompt-catalog.md','docs/mcp-tool-catalog.md',
+ 'server/appforge_mcp_server.py','server/auth.py','server/appforge_resource_provider.py','server/appforge_prompt_provider.py',
+ 'server/appforge_tool_provider.py','server/appforge_risk_classifier.py','server/manifest_loader.py',
+ 'deployment/docker/Dockerfile','deployment/docker/docker-compose.mcp.yml',
+ 'deployment/digitalocean/digitalocean-app.yaml.example','deployment/digitalocean/docs/digitalocean-deployment-guide.md',
+ 'deployment/env/mcp.env.example',
+ 'clients/examples/claude-desktop-config.json','clients/examples/cursor-config-example.json','clients/examples/vscode-mcp-example.json',
+ 'clients/examples/chatgpt-connector-notes.md','clients/examples/gemini-cli-mcp-config.json','clients/examples/generic-stdio-example.md',
+ 'clients/examples/generic-streamable-http-example.md'
 ]
 missing=[p for p in required if not (base/p).exists()]
 if missing:
@@ -36,14 +36,14 @@ if missing_resources:
         print(f'- {uri}: {path}')
     sys.exit(1)
 # Remote boundary checks: no project action execution should be advertised.
-text='\n'.join(p.read_text(encoding='utf-8', errors='replace') for p in [base/'README.md', base/'SECURITY_AND_APPROVAL_POLICY.md', base/'REMOTE_HOSTING_GUIDE.md'])
+text='\n'.join(p.read_text(encoding='utf-8', errors='replace') for p in [base/'docs/README.md', base/'docs/security-and-approval-policy.md', base/'docs/remote-hosting-guide.md'])
 required_phrases=['does not execute project actions','command references','requires_user_approval','mcp_executes: false']
 for phrase in required_phrases:
     if phrase not in text:
         print(f'Missing MCP safety phrase: {phrase}')
         sys.exit(1)
 # Smoke JSON-RPC stdio.
-server = base/'interface/server/appforge_mcp_server.py'
+server = base/'server/appforge_mcp_server.py'
 proc = subprocess.Popen([sys.executable, str(server), '--engine-root', str(root), '--transport', 'stdio'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 try:
     proc.stdin.write(json.dumps({'jsonrpc':'2.0','id':1,'method':'initialize','params':{}})+'\n')

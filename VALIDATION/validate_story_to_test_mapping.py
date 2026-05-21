@@ -1,8 +1,8 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 from pathlib import Path
 import sys
 root = Path(sys.argv[1]) if len(sys.argv) > 1 else Path('../project-control')
-required = [root/'registries/USER_STORY_REGISTRY.md', root/'registries/TEST_CASE_REGISTRY.md']
+required = [root/'registries/USER_STORY_REGISTRY.md', root/'registries/project-control/test-case-registry.md']
 missing = [str(p) for p in required if not p.exists()]
 if missing:
     print('Missing story/test mapping files:')

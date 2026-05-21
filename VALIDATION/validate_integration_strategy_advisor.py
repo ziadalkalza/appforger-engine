@@ -1,31 +1,31 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 from pathlib import Path
 import json, sys
 root = Path(__file__).resolve().parents[1]
 required = [
-    'workflows/strategy/integration-strategy-advisor/README.md',
-    'workflows/strategy/integration-strategy-advisor/INTEGRATION_STRATEGY_POLICY.md',
-    'workflows/strategy/integration-strategy-advisor/CONNECTOR_FIRST_POLICY.md',
-    'workflows/strategy/integration-strategy-advisor/CONNECTOR_VS_API_DECISION_TREE.md',
-    'workflows/strategy/integration-strategy-advisor/OFFICIAL_CONNECTOR_RESEARCH_POLICY.md',
-    'workflows/strategy/integration-strategy-advisor/HYBRID_INTEGRATION_POLICY.md',
-    'workflows/strategy/integration-strategy-advisor/CUSTOM_CODE_ITERATION_POLICY.md',
-    'skills/integrations/generic/strategy/choose_integration_approach/SKILL.md',
-    'skills/integrations/generic/strategy/research_official_connectors/SKILL.md',
-    'skills/integrations/generic/strategy/plan_hybrid_integration/SKILL.md',
-    'templates/engine/project-control-template/integrations/integration-strategy-registry.yaml',
-    'templates/engine/project-control-template/integrations/integration-decision-log.md',
-    'templates/engine/project-control-template/integrations/connector-catalog.yaml',
-    'templates/engine/project-control-template/integrations/integration-decision-packet.template.md',
-    'docs/getting-started/operator-guides/FEATURE_GUIDES/INTEGRATION_STRATEGY_ADVISOR.md',
-    'mcp/interface/prompts/choose_integration_approach.md',
+    'workflows/integration-strategy/integration-strategy-advisor/README.md',
+    'workflows/integration-strategy/integration-strategy-advisor/integration-strategy-policy.md',
+    'workflows/integration-strategy/integration-strategy-advisor/connector-first-policy.md',
+    'workflows/integration-strategy/integration-strategy-advisor/connector-vs-api-decision-tree.md',
+    'workflows/integration-strategy/integration-strategy-advisor/official-connector-research-policy.md',
+    'workflows/integration-strategy/integration-strategy-advisor/hybrid-integration-policy.md',
+    'workflows/integration-strategy/integration-strategy-advisor/custom-code-iteration-policy.md',
+    'skills/integration-strategy/strategy/choose-integration-approach/SKILL.md',
+    'skills/integration-strategy/strategy/research-official-connectors/SKILL.md',
+    'skills/integration-strategy/strategy/plan-hybrid-integration/SKILL.md',
+    'templates/project-control/integrations/integration-strategy-registry.yaml',
+    'templates/project-control/integrations/integration-decision-log.md',
+    'templates/project-control/integrations/connector-catalog.yaml',
+    'templates/project-control/integrations/integration-decision-packet.template.md',
+    'mcp/docs/feature-guides/integration-strategy-advisor.md',
+    'templates/integration-strategy/mcp-prompts/choose-integration-approach.md',
 ]
 missing = [p for p in required if not (root/p).exists()]
 if missing:
     print('Missing Integration Strategy Advisor paths:')
     for p in missing: print('-', p)
     sys.exit(1)
-policy=(root/'workflows/strategy/integration-strategy-advisor/INTEGRATION_STRATEGY_POLICY.md').read_text(encoding='utf-8')
+policy=(root/'workflows/integration-strategy/integration-strategy-advisor/integration-strategy-policy.md').read_text(encoding='utf-8')
 needles=['official connector','custom API/Python','decision packet']
 for n in needles:
     if n.lower() not in policy.lower():

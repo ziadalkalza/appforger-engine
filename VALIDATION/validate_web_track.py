@@ -1,15 +1,15 @@
-﻿from pathlib import Path
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = [
-    'workflows/implementation/web-frontend/README.md',
-    'workflows/implementation/web-frontend/web_stack_selection.md',
-    'integrations/design/apps/figma/to-web/FIGMA_TO_REACT_MAPPING.md',
-    'workflows/delivery/web-deployment/README.md',
-    'validation/domains/web-qa/PLAYWRIGHT_WORKFLOW.md',
-    'skills/implementation/web_skills/select_web_stack/SKILL.md',
-    'templates/packets/code-agent-packets/providers/codex/CODEX_WEB_PACKET_TEMPLATE.md',
-    'registries/WEB_ROUTE_REGISTRY.md',
+    'workflows/web-implementation/web-frontend/README.md',
+    'workflows/backend-implementation/web-frontend/web-stack-selection.md',
+    'integrations/design/figma/to-web/figma-to-react-mapping.md',
+    'workflows/release-delivery/delivery/web-deployment/README.md',
+    'validation/quality-assurance/web-qa/playwright-workflow.md',
+    'skills/web-implementation/select-web-stack/SKILL.md',
+    'ai-models/codex/templates/code-agent-packets/codex-web-packet-template.md',
+    'registries/project-control/web-route-registry.md',
 ]
 missing = [p for p in REQUIRED if not (ROOT / p).exists()]
 if missing:

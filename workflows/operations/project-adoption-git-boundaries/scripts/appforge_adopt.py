@@ -6,7 +6,7 @@ ROLE_DIR = {"backend":"backend","web":"web","frontend":"web","mobile":"mobile","
 
 def append_gitignore(target):
     block = """# >>> AppForger managed ignore rules
-/appforge-engine/
+/appforger-engine/
 /local-only/
 *.local.yaml
 *.local.env
@@ -14,7 +14,7 @@ def append_gitignore(target):
 .env.*
 # <<< AppForger managed ignore rules
 """
-    gi = Path(target)/".gitignore"
+    gi = Path(target)/"features/miscellaneous/.gitignore"
     cur = gi.read_text(encoding="utf-8") if gi.exists() else ""
     if "# >>> AppForger managed ignore rules" not in cur:
         gi.write_text((cur.rstrip()+"\n\n"+block).lstrip(), encoding="utf-8")
@@ -22,7 +22,7 @@ def append_gitignore(target):
 def scan(target):
     target=Path(target)
     for p in target.iterdir():
-        if p.is_dir() and p.name not in {"appforge-engine","project-control","local-only",".git"}:
+        if p.is_dir() and p.name not in {"appforger-engine","project-control","local-only",".git"}:
             print(f"candidate: {p.name}")
 
 def adopt(target, sources, apply=False, yes=False):

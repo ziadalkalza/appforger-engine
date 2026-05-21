@@ -1,12 +1,12 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 from pathlib import Path
 import sys
 root = Path(__file__).resolve().parents[1]
 required = [
-    root/'policies/operations/automation-jobs/README.md',
-    root/'policies/operations/automation-jobs/AUTOMATION_LEVELS.md',
-    root/'templates/jobs/automation-jobs/JOB_DEFINITION_TEMPLATE.md',
-    root/'skills/operations/automation_skills/create_automation_job/SKILL.md',
+    root/'policies/release-delivery/automation-jobs/README.md',
+    root/'policies/security-and-privacy/automation-jobs/automation-levels.md',
+    root/'templates/jobs/automation/job-definition-template.md',
+    root/'skills/automation/create-automation-job/SKILL.md',
 ]
 missing = [str(p.relative_to(root)) for p in required if not p.exists()]
 if missing:
