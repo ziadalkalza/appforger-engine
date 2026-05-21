@@ -208,6 +208,7 @@ def copy_workspace(src, target, modules):
         (target/"assets/design").mkdir(parents=True,exist_ok=True)
     if "local-only" in modules:
         (target/"local-only").mkdir(parents=True,exist_ok=True)
+        (target/"local-only/.appforge-created").write_text("Created by AppForger setup.\n", encoding="utf-8")
         for rel in ["local-only/.env.local.example", "local-only/README-start-here.md"]:
             copy_path(src,target,Path(rel))
         env_ex=target/"local-only/.env.local.example"

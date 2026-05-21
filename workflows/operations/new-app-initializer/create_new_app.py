@@ -77,6 +77,8 @@ def add_common_workspace_dirs(target: Path, include_design_assets: bool, include
         common_dirs.append("local-only")
     for d in common_dirs:
         (target / d).mkdir(parents=True, exist_ok=True)
+    if include_local_only:
+        (target / "local-only/.appforge-created").write_text("Created by AppForger setup.\n", encoding="utf-8")
 
 
 def resolve_implementation_dirs(app_type: str, mobile_strategy: str, backend: str, include_web: bool, include_ios: bool, include_android: bool, include_mobile: bool) -> set[str]:

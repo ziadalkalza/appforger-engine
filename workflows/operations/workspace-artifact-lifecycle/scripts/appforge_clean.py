@@ -3,6 +3,31 @@ import argparse, shutil, os, subprocess
 from pathlib import Path
 
 APPFORGE_ADAPTER_MARKER = "AppForger"
+APPFORGE_MARKER_FILES = {
+    "project-control": [
+        "appforge-project.yaml",
+        "APPFORGE_PROJECT.yaml",
+        "appforge-active-rules.md",
+        "APPFORGE_ACTIVE_RULES.md",
+        "appforge-scaffold-summary.md",
+    ],
+    "local-only": [
+        ".appforge-created",
+    ],
+    "appforger-engine": [
+        "mcp/server/appforge_mcp_server.py",
+        "registries/APPFORGE_FEATURE_MANIFEST.json",
+    ],
+}
+SAFE_ROOT_FILES = [
+    "APPFORGE_INJECTION_SUMMARY.md",
+]
+SAFE_ADAPTER_FILES = [
+    "AGENTS.md",
+    "CLAUDE.md",
+    ".cursor/rules/appforge.mdc",
+    ".github/copilot-instructions.md",
+]
 
 def rm(path, yes):
     if not path.exists(): return
@@ -11,13 +36,32 @@ def rm(path, yes):
         if path.is_dir() and not path.is_symlink(): shutil.rmtree(path)
         else: path.unlink()
 
+def is_empty_dir(path):
+    return path.is_dir() and not any(path.iterdir())
+
+def has_appforge_marker(path, marker_group):
+    for rel in APPFORGE_MARKER_FILES.get(marker_group, []):
+        if (path/rel).exists():
+            return True
+    return False
+
+def rm_if_appforge_owned(path, yes, marker_group, allow_empty=False):
+    if not path.exists():
+        return
+    if has_appforge_marker(path, marker_group) or (allow_empty and is_empty_dir(path)):
+        rm(path, yes)
+    else:
+        print(f"skip, not proven AppForger-created: {path}")
+
 def remove_generated_adapters(target, yes):
-    for rel in ["AGENTS.md","CLAUDE.md",".cursor/rules/appforge.mdc",".github/copilot-instructions.md","APPFORGE_INJECTION_SUMMARY.md"]:
+    for rel in SAFE_ADAPTER_FILES + SAFE_ROOT_FILES:
         p=Path(target)/rel
         if p.exists():
             txt=p.read_text(encoding="utf-8", errors="ignore")
             if APPFORGE_ADAPTER_MARKER in txt:
                 rm(p, yes)
+            else:
+                print(f"skip, no AppForger marker: {p}")
 
 def restore_adopted(target, yes):
     mf=Path(target)/"project-control/adoption/adoption-manifest.yaml"
@@ -51,17 +95,18 @@ def main():
     if args.restore_adopted_sources:
         restore_adopted(target,args.yes)
     if args.mode=="remove-local":
-        rm(target/"local-only", args.yes)
+        rm_if_appforge_owned(target/"local-only", args.yes, "local-only", allow_empty=True)
     elif args.mode=="remove-engine":
-        for rel in ["project-control","appforger-engine"]:
-            rm(target/rel,args.yes)
+        rm_if_appforge_owned(target/"project-control", args.yes, "project-control")
+        rm_if_appforge_owned(target/"appforger-engine", args.yes, "appforger-engine")
         remove_generated_adapters(target,args.yes)
     elif args.mode=="remove-project-keep-engine":
         if not args.project_name_confirmation:
             raise SystemExit("project-name confirmation required")
-        for p in target.iterdir():
-            if p.name!="appforger-engine":
-                rm(p,args.yes)
+        rm_if_appforge_owned(target/"project-control", args.yes, "project-control")
+        rm_if_appforge_owned(target/"local-only", args.yes, "local-only", allow_empty=True)
+        remove_generated_adapters(target,args.yes)
+        print("skip generic project folders: docs, assets, exports, backend, web, mobile, ios, android")
     elif args.mode=="remove-runtime-containers":
         print("Use docker compose down via project-control/runtime/scripts/appforge_runtime.py down")
     elif args.mode=="remove-runtime-volumes":
