@@ -3,8 +3,10 @@
 ## Required input
 
 ```text
-backend draft
+approved or active draft BRD, backend draft
 ```
+
+API contracts must trace endpoints, data models, errors, auth, privacy, and integration behavior to BRD requirements or record a waiver.
 
 ## Allowed tools
 

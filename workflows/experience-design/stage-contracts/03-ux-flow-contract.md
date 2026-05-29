@@ -3,8 +3,10 @@
 ## Required input
 
 ```text
-requirements
+approved or active draft BRD, product brief, requirements
 ```
+
+UX flows must reference the BRD requirement IDs they satisfy or record an approved waiver/draft-only exception.
 
 ## Allowed tools
 

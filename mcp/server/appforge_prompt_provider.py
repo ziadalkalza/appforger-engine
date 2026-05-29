@@ -14,8 +14,9 @@ PROMPTS = {
     "run_source_pipeline": """Run the source pipeline workflow. Identify source type, storage mode, indexing, graph settings, and return local command with risk metadata.""",
     "clean_appforge_project": """Create a cleanup plan. Cleanup is risky. Return command references only and require user approval before local execution.""",
     "diagnose_appforge_project": """Inspect AppForger structure using safe validation commands. Report missing layers, stale files, and next actions.""",
-    "create_execution_packet": """Create an execution packet that references project-control truth, source registries, constraints, risks, and approval requirements."""
-    ,"request_mcp_feature_issue": """Create an issue request plan for a new global AppForger MCP feature. Do not implement in the user project. Tell the user to open the issue on the AppForger MCP repository."""
+    "create_execution_packet": """Create an execution packet that references project-control truth, source registries, constraints, risks, and approval requirements.""",
+    "create_business_requirements_document": """Create or import the mandatory Business Requirements Document before real app-building work. If the user has a template, store the project-specific copy under project-control/requirements and register it. Otherwise use the engine BRD template. The BRD sits above the product brief and must be referenced by UX, design, backend/API, frontend, QA, and release work.""",
+    "request_mcp_feature_issue": """Create an issue request plan for a new global AppForger MCP feature. Do not implement in the user project. Tell the user to open the issue on the AppForger MCP repository."""
 }
 
 

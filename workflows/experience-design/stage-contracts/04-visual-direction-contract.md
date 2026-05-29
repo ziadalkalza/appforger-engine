@@ -3,8 +3,10 @@
 ## Required input
 
 ```text
-UX flows
+approved or active draft BRD, UX flows
 ```
+
+Visual direction must reflect BRD target users, business objectives, constraints, brand/compliance needs, and success criteria.
 
 ## Allowed tools
 

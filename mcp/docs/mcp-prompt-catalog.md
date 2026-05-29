@@ -12,6 +12,7 @@ The MCP exposes these workflow prompts:
 - `clean_appforge_project`
 - `diagnose_appforge_project`
 - `create_execution_packet`
+- `create_business_requirements_document`
 
 Prompts are model-facing workflows. They do not execute project actions by themselves.
 

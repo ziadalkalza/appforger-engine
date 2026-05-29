@@ -3,6 +3,7 @@
 | Task ID | User intent | Required stage | Skill/packet |
 |---|---|---|---|
 | start_new_app | Start a new app | ideation | NEW_APP_INITIALIZER |
+| create_business_requirements_document | Define business requirements | requirements | skills/product-management/create-business-requirements-document |
 | create_product_brief | Define product | requirements | product brief skill |
 | create_ux_flows | Define flows | ux_flow | skills/design/generic/create_ux_flows |
 | create_figma_prompt | Prepare Figma work | figma_design | skills/design/apps/figma/create_prompt |

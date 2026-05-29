@@ -3,8 +3,10 @@
 ## Required input
 
 ```text
-design baseline and API contract
+approved or active draft BRD, design baseline and API contract
 ```
+
+iOS implementation packets must reference the BRD path and requirement IDs for the feature or screen.
 
 ## Allowed tools
 

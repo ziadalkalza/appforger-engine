@@ -3,8 +3,10 @@
 ## Required input
 
 ```text
-backend and frontend implementations
+approved or active draft BRD, backend and frontend implementations
 ```
+
+Integration work must trace third-party services, data movement, security, privacy, operational, and reporting behavior to BRD requirements or record a waiver.
 
 ## Allowed tools
 

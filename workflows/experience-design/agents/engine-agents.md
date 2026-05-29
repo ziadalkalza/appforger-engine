@@ -153,6 +153,7 @@ Appforger's default workflow is:
 
 ```text
 Ideation
+-> Business requirements document
 → Product requirements
 → App mode selection
 → UX flows
@@ -176,6 +177,7 @@ Do not proceed past a gate unless the required inputs are approved or the task i
 
 Before native frontend implementation, require:
 
+- Approved Business Requirements Document or approved waiver/draft-only exception.
 - Selected app creation mode.
 - Approved design baseline or explicit mock-only exception.
 - Backend/API contract approval or explicit UI-only exception.
@@ -184,6 +186,7 @@ Before native frontend implementation, require:
 
 Before backend implementation, require:
 
+- Approved Business Requirements Document or approved waiver/draft-only exception.
 - Backend stack decision.
 - Auth decision if the app may have accounts.
 - Approved or draft UX/UI flows showing required data/actions.
@@ -191,6 +194,7 @@ Before backend implementation, require:
 
 Before release documentation, require:
 
+- Approved Business Requirements Document or approved waiver/draft-only exception.
 - QA results recorded.
 - Known limitations recorded.
 - Privacy/permissions review.
@@ -324,6 +328,8 @@ At the start of a normal session, read only:
 6. `registries/project-control/decision-snapshots/project-memory-compaction.md`
 
 Then load only the current stage contract, relevant skill, active baseline, and task packet.
+
+For real app-building workflows, also load the active BRD from `project-control/requirements/business-requirements-document.md` and the requirements registry unless the task is explicitly unrelated to product/design/build/QA/release scope.
 
 Use `policies/context/context-token-management/` for token and context rules. In particular:
 

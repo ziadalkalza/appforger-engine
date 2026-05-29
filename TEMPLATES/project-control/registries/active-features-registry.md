@@ -8,3 +8,4 @@ Tracks optional Appforger features enabled for this project.
 | context_backend | inactive | TBD | |
 | team_operations_backend | inactive | TBD | |
 | automation | level_2_default | TBD | |
+| business_requirements_document | mandatory | engine default | Required before real design/build workflow |

@@ -1,6 +1,7 @@
 # Web Frontend Contract
 
 ## Required inputs
+- Approved or active draft BRD
 - Selected web stack
 - Approved design baseline or explicit mock-only instruction
 - API contract or backend mock policy
@@ -14,4 +15,4 @@
 - Updated task status and frontend baseline if applicable
 
 ## Gate
-Do not begin production web implementation without approved responsive Figma baseline and API contract, unless the task is explicitly marked mock-only/prototype-only.
+Do not begin production web implementation without an approved BRD, approved responsive Figma baseline, and API contract, unless the task is explicitly marked mock-only/prototype-only or has an approved waiver.

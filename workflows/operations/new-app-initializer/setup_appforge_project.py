@@ -15,6 +15,8 @@ CORE_PROJECT_CONTROL_PATHS = [
     "pending-questions.md",
     "product-overview.md",
     "project-profile.md",
+    "requirements/README.md",
+    "requirements/business-requirements-document.md",
     "registries/active-features-registry.md",
     "registries/active-provider-registry.md",
     "registries/active-workflow-rules-registry.md",
@@ -22,6 +24,7 @@ CORE_PROJECT_CONTROL_PATHS = [
     "registries/project-initialization-registry.md",
     "registries/provider-decision-registry.md",
     "registries/provider-preference-registry.md",
+    "registries/requirements-document-registry.md",
     "registries/stage-override-registry.md",
     "workflow-overrides/.gitkeep",
 ]

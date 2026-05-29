@@ -3,8 +3,10 @@
 ## Required input
 
 ```text
-approved design and backend choice
+approved or active draft BRD, approved design and backend choice
 ```
+
+Backend work must trace data, auth, security, privacy, integration, reporting, and operational decisions to BRD requirements or record a waiver.
 
 ## Allowed tools
 

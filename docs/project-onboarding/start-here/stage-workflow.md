@@ -33,6 +33,7 @@ S14 Release documentation
 
 ### S2 Product requirements
 
+- Approved or active draft Business Requirements Document (BRD).
 - Product brief.
 - MVP scope.
 - Feature registry.
@@ -127,3 +128,9 @@ S14 Release documentation
 ## Iteration
 
 If a later stage exposes a problem, use `docs/project-onboarding/start-here/iteration-and-change-requests.md`. Do not restart the whole project.
+
+## Business requirements rule
+
+The BRD is mandatory for real app-building work and sits above the product brief. If the user has a BRD template, store the project-specific copy under `project-control/requirements/` and register it. If not, use `templates/specifications/business-requirements-document-template.md`.
+
+UX, visual direction, Figma work, backend/API contracts, frontend implementation, QA, and release work must reference the active BRD or record an approved waiver/draft-only exception.

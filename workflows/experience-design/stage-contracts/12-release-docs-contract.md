@@ -3,8 +3,10 @@
 ## Required input
 
 ```text
-QA signoff
+approved BRD, QA signoff
 ```
+
+Release documentation must reflect BRD scope, known limitations, privacy/security commitments, support expectations, and approved exclusions.
 
 ## Allowed tools
 

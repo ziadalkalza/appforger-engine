@@ -3,8 +3,10 @@
 ## Required input
 
 ```text
-visual direction
+approved or active draft BRD, visual direction
 ```
+
+Figma prompts, screens, components, and baseline packets must preserve BRD business constraints, target users, success criteria, accessibility/privacy/security constraints, and requirement traceability.
 
 ## Allowed tools
 

@@ -11,6 +11,7 @@ The Appforger MCP exposes read/plan/search tools by default:
 - `create_cleanup_plan`
 - `create_project_control_module_plan`
 - `create_context_sync_plan`
+- `create_business_requirements_plan`
 - `classify_action_risk`
 
 Tools return plans, command references, risk flags, and approval requirements. They do not execute project actions in remote mode.
@@ -27,3 +28,7 @@ Creates a command plan for adding optional `project-control/` sections after an 
 ## create_feature_request_issue_plan
 
 Creates an issue request plan for a new global Appforger MCP/engine feature. This tool does not modify project files. It returns the issue template path, risk notes, proposed MCP surface, and next steps for opening an issue on the Appforger MCP repository.
+
+## create_business_requirements_plan
+
+Creates a BRD creation/import plan. The tool does not write project files. It returns the mandatory BRD workflow, project-control BRD path, registry path, template source rule, required approval, and downstream design/build gate notes.

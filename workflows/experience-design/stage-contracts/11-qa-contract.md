@@ -3,8 +3,10 @@
 ## Required input
 
 ```text
-integrated build
+approved BRD, integrated build
 ```
+
+QA plans and test reports must cover BRD acceptance signals and non-functional requirements, or document approved exclusions.
 
 ## Allowed tools
 

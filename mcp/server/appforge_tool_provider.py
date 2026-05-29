@@ -20,6 +20,7 @@ def tool_schemas() -> list[dict]:
         {"name":"create_project_control_module_plan","description":"Return a command to add optional project-control modules after onboarding changes. Does not execute.","inputSchema":{"type":"object","properties":{"modules":{"type":"array","items":{"type":"string"}},"target":{"type":"string","description":"Project root selected by the user or AI client. Defaults to the MCP workspace root if configured, otherwise current directory."}},"required":["modules"]}},
         {"name":"create_context_sync_plan","description":"Return source pipeline/code/docs sync command reference. Does not run.","inputSchema":{"type":"object","properties":{"source_id":{"type":"string"},"storage_mode":{"type":"string"}}}},
         {"name":"classify_action_risk","description":"Classify workflow or command risk.","inputSchema":{"type":"object","properties":{"text":{"type":"string"}},"required":["text"]}},
+        {"name":"create_business_requirements_plan","description":"Return a BRD creation/import plan. Does not write project files.","inputSchema":{"type":"object","properties":{"project_name":{"type":"string"},"has_user_template":{"type":"boolean"},"template_source":{"type":"string"},"target":{"type":"string","description":"Project root selected by the user or AI client. Defaults to the MCP workspace root if configured, otherwise current directory."}}}},
         {"name":"create_integration_strategy_plan","description":"Return an integration strategy advisor plan. Does not create integration code or execute actions.","inputSchema":{"type":"object","properties":{"integration":{"type":"string"},"goal":{"type":"string"},"needs_persistent_rag":{"type":"boolean"},"needs_graph":{"type":"boolean"}}}},
         {"name":"create_feature_request_issue_plan","description":"Create an issue request plan for a new global AppForger MCP/engine feature. Does not modify project files.","inputSchema":{"type":"object","properties":{"feature":{"type":"string"},"goal":{"type":"string"},"requested_surface":{"type":"string"}},"required":["feature"]}}
     ]
@@ -104,6 +105,33 @@ class ToolProvider:
             return {"workflow":"run_source_pipeline", "recommended_command": cmd, **classify_action(cmd)}
         if name == "classify_action_risk":
             return classify_action(args.get("text", ""))
+
+        if name == "create_business_requirements_plan":
+            target = self._target(args)
+            project = args.get("project_name", "<project name>")
+            has_template = bool(args.get("has_user_template", False))
+            template_source = args.get("template_source") or ("user_provided_template" if has_template else "templates/specifications/business-requirements-document-template.md")
+            return {
+                "workflow": "create_business_requirements_document",
+                "project": project,
+                "target": target,
+                "mcp_executes": False,
+                "mandatory": True,
+                "template_source": template_source,
+                "project_brd_path": "project-control/requirements/business-requirements-document.md",
+                "registry_path": "project-control/registries/requirements-document-registry.md",
+                "skill": "skills/product-management/create-business-requirements-document/SKILL.md",
+                "workflow_policy": "workflows/product/business-requirements/business-requirements-workflow.md",
+                "requires_user_approval": True,
+                "next_steps": [
+                    "Read current project-control status, decisions, assumptions, pending questions, and requirements registry.",
+                    "If the user supplied a template, store the project-specific copy under project-control/requirements and register it.",
+                    "If no user template exists, use the engine BRD template.",
+                    "Create or update the BRD before product brief, UX/design, backend/API, frontend, QA, or release work.",
+                    "Record open questions, assumptions, requirement IDs, and approval state."
+                ],
+                **classify_action("create business requirements document plan")
+            }
 
         if name == "create_integration_strategy_plan":
             integration = args.get("integration", "<integration>")

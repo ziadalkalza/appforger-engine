@@ -204,6 +204,20 @@
       ]
     },
     {
+      "id": "mandatory_business_requirements_document",
+      "status": "implemented_scaffold",
+      "description": "Mandatory BRD workflow that sits above the product brief and gates design, build, QA, and release work unless waived or explicitly draft-only.",
+      "required_paths": [
+        "templates/specifications/business-requirements-document-template.md",
+        "templates/project-control/requirements/README.md",
+        "templates/project-control/requirements/business-requirements-document.md",
+        "templates/project-control/registries/requirements-document-registry.md",
+        "workflows/product/business-requirements/business-requirements-workflow.md",
+        "skills/product-management/create-business-requirements-document/SKILL.md",
+        "templates/product-management/mcp-prompts/create-business-requirements-document.md"
+      ]
+    },
+    {
       "id": "integration_strategy_advisor",
       "status": "implemented_scaffold",
       "required_paths": [

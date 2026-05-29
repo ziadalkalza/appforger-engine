@@ -6,6 +6,8 @@
 approved idea
 ```
 
+The Business Requirements Document (BRD) is mandatory. If the user provides a BRD template, use it for the project-specific BRD under `project-control/requirements/`. If no template is provided, use the engine template at `templates/specifications/business-requirements-document-template.md`.
+
 ## Allowed tools
 
 - ChatGPT for reasoning, review, and packet creation
@@ -15,7 +17,7 @@ approved idea
 ## Required output
 
 ```text
-feature list, constraints, user types
+approved or active draft BRD, product brief, feature list, constraints, user types
 ```
 
 ## Approval gate
@@ -32,12 +34,17 @@ Update whichever apply:
 APPFORGER_PROJECT_STATUS.md
 DECISION_LOG.md
 PENDING_QUESTIONS.md
+REGISTRIES/REQUIREMENTS_DOCUMENT_REGISTRY.md
 REGISTRIES/FEATURE_REGISTRY.md
 REGISTRIES/SCREEN_REGISTRY.md
 REGISTRIES/API_REGISTRY.md
 REGISTRIES/DESIGN_BASELINE_REGISTRY.md
 REGISTRIES/TEST_REGISTRY.md
 ```
+
+## Downstream gate
+
+Do not proceed to UX, visual design, Figma, backend/API, frontend implementation, QA, or release work unless the BRD is approved, explicitly marked draft-only/mock-only, or waived with risk and affected stages recorded.
 
 ## Iteration path
 

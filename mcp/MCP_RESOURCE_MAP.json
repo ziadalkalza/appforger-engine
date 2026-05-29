@@ -58,6 +58,36 @@
       "mime_type": "text/markdown"
     },
     {
+      "id": "business-requirements-skill",
+      "uri": "appforger://skills/product_management/create_business_requirements_document",
+      "path": "skills/product-management/create-business-requirements-document/SKILL.md",
+      "mime_type": "text/markdown"
+    },
+    {
+      "id": "business-requirements-workflow",
+      "uri": "appforger://workflows/product/business_requirements",
+      "path": "workflows/product/business-requirements/business-requirements-workflow.md",
+      "mime_type": "text/markdown"
+    },
+    {
+      "id": "business-requirements-template",
+      "uri": "appforger://templates/specifications/business-requirements-document",
+      "path": "templates/specifications/business-requirements-document-template.md",
+      "mime_type": "text/markdown"
+    },
+    {
+      "id": "business-requirements-project-template",
+      "uri": "appforger://templates/project-control/requirements/business-requirements-document",
+      "path": "templates/project-control/requirements/business-requirements-document.md",
+      "mime_type": "text/markdown"
+    },
+    {
+      "id": "business-requirements-prompt",
+      "uri": "appforger://prompts/create_business_requirements_document",
+      "path": "templates/product-management/mcp-prompts/create-business-requirements-document.md",
+      "mime_type": "text/markdown"
+    },
+    {
       "id": "code-source-registry-template",
       "uri": "appforger://templates/project-control/code-source-registry",
       "path": "templates/project-control/code-sources/code-source-registry.yaml",
